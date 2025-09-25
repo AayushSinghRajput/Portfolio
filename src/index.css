@@ -136,6 +136,9 @@
   /* Animations */
   .fade-in-up {
     @apply opacity-0 translate-y-8;
+  }
+  
+  .animate-fadeInUp {
     animation: fadeInUp 0.6s ease-out forwards;
   }
   
