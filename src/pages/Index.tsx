@@ -26,7 +26,14 @@ const Index = () => {
 
     // Observe all fade-in elements
     const fadeElements = document.querySelectorAll('.fade-in-up');
-    fadeElements.forEach(el => observer.observe(el));
+    // Pre-show elements already in viewport and observe them
+    fadeElements.forEach(el => {
+      const rect = (el as HTMLElement).getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        (el as HTMLElement).classList.add('animate-fadeInUp');
+      }
+      observer.observe(el);
+    });
 
     return () => observer.disconnect();
   }, []);
