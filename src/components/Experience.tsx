@@ -16,7 +16,8 @@ const Experience = () => {
         "Collaborated with a team of 5 developers using Agile methodology"
       ],
       technologies: ["React", "Node.js", "MongoDB", "Express", "Git"],
-      gradient: "from-blue-500 to-cyan-500"
+      gradient: "from-blue-500 to-cyan-500",
+      websiteUrl: "https://techsolutions.com"
     },
     {
       id: 2,
@@ -32,7 +33,8 @@ const Experience = () => {
         "Mentored 2 junior developers in React best practices"
       ],
       technologies: ["React", "TypeScript", "Tailwind CSS", "Next.js"],
-      gradient: "from-purple-500 to-pink-500"
+      gradient: "from-purple-500 to-pink-500",
+      websiteUrl: "https://startuphub.io"
     },
     {
       id: 3,
@@ -48,7 +50,8 @@ const Experience = () => {
         "Received certifications in React, Node.js, and Database Design"
       ],
       technologies: ["HTML", "CSS", "JavaScript", "React", "Node.js", "MongoDB"],
-      gradient: "from-green-500 to-emerald-500"
+      gradient: "from-green-500 to-emerald-500",
+      websiteUrl: "https://codecademy.com"
     }
   ];
 
@@ -97,10 +100,16 @@ const Experience = () => {
                           <Calendar size={16} />
                           <span>{exp.period}</span>
                         </div>
-                        <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+                        <a
+                          href={exp.websiteUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-accent transition-colors cursor-pointer group"
+                        >
                           <MapPin size={16} />
                           <span>{exp.location}</span>
-                        </div>
+                          <ExternalLink size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                        </a>
                       </div>
                     </div>
 
