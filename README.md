@@ -1,73 +1,106 @@
-# Welcome to your Lovable project
+# Aayush Singh Rajput Portfolio
 
-## Project info
+A modern, responsive personal portfolio website showcasing my skills, projects, and experience as a web developer.
 
-**URL**: https://lovable.dev/projects/bea8d4a5-45aa-4d22-9e5a-61a47398b9d5
+## Project Overview
 
-## How can I edit this code?
+This portfolio website is built as a single-page application with multiple sections:
+- Hero section with introduction
+- About me
+- Skills and technologies
+- Projects showcase
+- Work experience
+- Contact form
+- Footer with social links
 
-There are several ways of editing your application.
+## Technologies Used
 
-**Use Lovable**
+### Frontend
+- **React** - UI library
+- **TypeScript** - Type-safe JavaScript
+- **Vite** - Fast build tool and development server
+- **Tailwind CSS** - Utility-first CSS framework
+- **shadcn/ui** - Reusable component library built with Radix UI
+- **React Router** - For navigation
+- **React Query** - For data fetching and state management
+- **React Hook Form** - For form handling with validation
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/bea8d4a5-45aa-4d22-9e5a-61a47398b9d5) and start prompting.
+### Backend
+- **Node.js** - JavaScript runtime
+- **Express** - Web framework
+- **MongoDB** - NoSQL database
+- **Mongoose** - MongoDB object modeling
 
-Changes made via Lovable will be committed automatically to this repo.
+## Features
 
-**Use your preferred IDE**
+- **Responsive Design** - Optimized for all screen sizes
+- **Dark/Light Mode** - Toggle between color schemes
+- **Animations** - Smooth scrolling and fade-in effects
+- **Contact Form** - Send messages directly from the website
+- **Resume Download** - PDF resume available for download
+- **Project Gallery** - Showcasing my development work
+- **Skills Showcase** - Visual representation of technical skills
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Getting Started
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Prerequisites
 
-Follow these steps:
+- Node.js (v16 or higher)
+- npm or bun package manager
+- MongoDB account (for contact form functionality)
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Installation
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+```bash
+# Clone the repository
+git clone https://github.com/AayushSinghRajput/Portfolio.git
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Navigate to the project directory
+cd aayush-codes-web
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Install frontend dependencies
+npm install
+
+# Setup environment variables
+# Create a .env file in the root directory with your configuration
+
+# Start the frontend development server
+npm run dev
+
+# For backend development (optional)
+cd backend
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## Environment Variables
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Create a `.env` file in the root of the backend directory with the following:
 
-**Use GitHub Codespaces**
+```
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Deployment
 
-## What technologies are used for this project?
+The frontend can be deployed on Vercel, Netlify, or any static site hosting service.
+The backend can be deployed on platforms like Heroku, Railway, or Render.
 
-This project is built with:
+## Project Structure
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- `/src` - Frontend React application
+  - `/components` - Reusable UI components
+  - `/pages` - Page components
+  - `/assets` - Images and static files
+  - `/hooks` - Custom React hooks
+  - `/lib` - Utility functions
+- `/backend` - Express server
+  - `/controllers` - Request handlers
+  - `/models` - Database schemas
+  - `/routes` - API endpoints
+  - `/config` - Server configuration
 
-## How can I deploy this project?
+## Contact
 
-Simply open [Lovable](https://lovable.dev/projects/bea8d4a5-45aa-4d22-9e5a-61a47398b9d5) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Aayush Singh Rajput - [GitHub](https://github.com/AayushSinghRajput)
