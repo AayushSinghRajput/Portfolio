@@ -84,8 +84,20 @@ MONGO_URI=your_mongodb_connection_string
 
 ## Deployment
 
-The frontend can be deployed on Vercel, Netlify, or any static site hosting service.
-The backend can be deployed on platforms like Heroku, Railway, or Render.
+### Live Demo
+- **Frontend**: [https://portfolio-taupe-two-ivi4t6cgf8.vercel.app](https://portfolio-taupe-two-ivi4t6cgf8.vercel.app)
+- **Backend API**: [https://portfolio-backend-jax3.onrender.com](https://portfolio-backend-jax3.onrender.com)
+
+The frontend is deployed on Vercel, and the backend is hosted on Render.
+
+> **Note**: When running the application locally, the backend will be accessible at `http://localhost:5000`.
+
+### API Endpoints
+
+- **GET /api/health** - Health check endpoint
+- **POST /api/contact** - Submit contact form
+  - Body: `{ "name": "string", "email": "string", "message": "string" }`
+  - Rate limited to 5 requests per IP address per 15 minutes
 
 ## Project Structure
 

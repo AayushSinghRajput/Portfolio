@@ -19,8 +19,13 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    // Use production backend when deployed, localhost for development
+    const API_URL = window.location.hostname === 'localhost' 
+      ? "http://localhost:5000/api/contact"
+      : "https://portfolio-backend-jax3.onrender.com/api/contact";
+
     try {
-      const res = await fetch("http://localhost:5000/api/contact", {
+      const res = await fetch(API_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
