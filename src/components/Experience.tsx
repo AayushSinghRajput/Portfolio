@@ -106,8 +106,16 @@ const Experience = () => {
                           rel="noopener noreferrer"
                           className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-accent transition-colors cursor-pointer group"
                         >
+                        <a
+                          href={exp.websiteUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-accent transition-colors cursor-pointer group"
+                        >
                           <MapPin size={16} />
                           <span>{exp.location}</span>
+                          <ExternalLink size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                        </a>
                           <ExternalLink size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
                         </a>
                       </div>
