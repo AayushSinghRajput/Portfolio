@@ -61,7 +61,7 @@ const About = () => {
 
               {/* Skills Tags */}
               <div className="flex flex-wrap gap-3">
-                {['HTML', 'CSS', 'JavaScript', 'React', 'Next.js', 'Node.js', 'Express', 'MongoDB', 'Git/GitHub', 'RESTful APIs'].map((skill) => (
+                {['HTML', 'CSS', 'JavaScript', 'Tailwind CSS','React', 'Next.js', 'Node.js', 'Express', 'MongoDB', 'Git/GitHub', 'RESTful APIs'].map((skill) => (
                   <span 
                     key={skill}
                     className="px-4 py-2 glass-card text-sm font-medium hover:scale-105 transition-transform"

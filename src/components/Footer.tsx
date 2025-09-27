@@ -19,17 +19,17 @@ const Footer = () => {
   const socialLinks = [
     {
       icon: Github,
-      href: 'https://github.com/aayush-singh-rajput',
+      href: 'ttps://github.com/AayushSinghRajput',
       label: 'GitHub'
     },
     {
       icon: Linkedin,
-      href: 'https://linkedin.com/in/aayush-singh-rajput',
+      href: 'https://www.linkedin.com/in/aayush-singh-rajput-7314b7279/',
       label: 'LinkedIn'
     },
     {
       icon: Mail,
-      href: 'mailto:aayush@example.com',
+      href: 'mailto:aayushsinghrajput3003@gmail.com',
       label: 'Email'
     }
   ];
@@ -99,7 +99,7 @@ const Footer = () => {
                   href="mailto:aayush@example.com"
                   className="text-accent hover:text-accent-glow transition-colors"
                 >
-                  aayush@example.com
+                  aayushsinghrajput3003@gmail.com
                 </a>
               </div>
               <Button 

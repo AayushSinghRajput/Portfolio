@@ -136,8 +136,13 @@
   /* Animations */
   .fade-in-up {
     @apply opacity-0 translate-y-8;
-    animation: fadeInUp 0.6s ease-out forwards;
   }
+  
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 1;
+  transform: translateY(0);
+}
   
   .stagger-1 { animation-delay: 0.1s; }
   .stagger-2 { animation-delay: 0.2s; }

@@ -18,9 +18,9 @@ const Skills = () => {
       skills: [
         { name: "HTML5", level: 95 },
         { name: "CSS3", level: 90 },
-        { name: "JavaScript", level: 88 },
-        { name: "React", level: 85 },
-        { name: "Next.js", level: 80 }
+        { name: "JavaScript", level: 80 },
+        { name: "React", level: 90 },
+        { name: "Next.js", level: 75 }
       ]
     },
     {
@@ -29,8 +29,8 @@ const Skills = () => {
       color: "from-green-500 to-emerald-500",
       skills: [
         { name: "Node.js", level: 85 },
-        { name: "Express", level: 82 },
-        { name: "RESTful APIs", level: 88 },
+        { name: "Express", level: 80 },
+        { name: "RESTful APIs", level: 75 },
         { name: "Authentication", level: 80 }
       ]
     },
@@ -39,10 +39,10 @@ const Skills = () => {
       icon: Database,
       color: "from-purple-500 to-pink-500",
       skills: [
-        { name: "MongoDB", level: 85 },
+        { name: "MongoDB", level: 90 },
         { name: "MySQL", level: 75 },
         { name: "Database Design", level: 80 },
-        { name: "Data Modeling", level: 78 }
+        { name: "Data Modeling", level: 70 }
       ]
     },
     {
@@ -51,9 +51,9 @@ const Skills = () => {
       color: "from-orange-500 to-red-500",
       skills: [
         { name: "Git/GitHub", level: 90 },
-        { name: "Responsive Design", level: 92 },
-        { name: "Problem Solving", level: 88 },
-        { name: "Team Collaboration", level: 85 }
+        { name: "Responsive Design", level: 95 },
+        { name: "Problem Solving", level: 85 },
+        { name: "Team Collaboration", level: 90 }
       ]
     }
   ];

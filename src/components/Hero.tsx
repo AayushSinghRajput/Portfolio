@@ -1,6 +1,6 @@
 import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import profileAvatar from '@/assets/profile-avatar.jpg';
+import profileAvatar from '@/assets/profile_image.png';
 
 const Hero = () => {
   const scrollToSection = (href: string) => {
@@ -76,7 +76,7 @@ const Hero = () => {
             {/* Social Links */}
             <div className="flex justify-center space-x-6 fade-in-up stagger-4">
               <a 
-                href="https://github.com/aayush-singh-rajput" 
+                href="https://github.com/AayushSinghRajput" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="p-3 rounded-full glass-card hover:scale-110 transition-transform hover:shadow-accent"
@@ -84,7 +84,7 @@ const Hero = () => {
                 <Github size={24} />
               </a>
               <a 
-                href="https://linkedin.com/in/aayush-singh-rajput" 
+                href="https://www.linkedin.com/in/aayush-singh-rajput-7314b7279/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="p-3 rounded-full glass-card hover:scale-110 transition-transform hover:shadow-accent"
@@ -92,7 +92,7 @@ const Hero = () => {
                 <Linkedin size={24} />
               </a>
               <a 
-                href="mailto:aayush@example.com"
+                href="mailto:aayushsinghrajput3003@gmail.com"
                 className="p-3 rounded-full glass-card hover:scale-110 transition-transform hover:shadow-accent"
               >
                 <Mail size={24} />

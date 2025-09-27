@@ -4,52 +4,55 @@ const Experience = () => {
   const experiences = [
     {
       id: 1,
-      title: "Full Stack Developer Intern",
-      company: "Tech Solutions Inc.",
-      location: "Remote",
-      period: "June 2024 - Present",
+      title: "Frontend Developer Intern",
+      company: "BlueFox Pvt. Ltd.",
+      location: "Onsite",
+      period: "November 2024 - December 2024",
       type: "Internship",
       description: "Developed and maintained web applications using React, Node.js, and MongoDB. Collaborated with senior developers to implement new features and optimize existing codebase.",
       achievements: [
-        "Built 3 full-stack web applications from scratch",
+        "Built 1 full-stack web applications from scratch",
         "Improved application performance by 40% through optimization",
-        "Collaborated with a team of 5 developers using Agile methodology"
+        "Collaborated with a team of 3 developers using Agile methodology"
       ],
       technologies: ["React", "Node.js", "MongoDB", "Express", "Git"],
-      gradient: "from-blue-500 to-cyan-500"
+      gradient: "from-blue-500 to-cyan-500",
+      websiteUrl: "https://bluefox.com.np/about/"
     },
-    {
-      id: 2,
-      title: "Frontend Developer",
-      company: "StartupHub",
-      location: "Hybrid",
-      period: "Jan 2024 - May 2024",
-      type: "Part-time",
-      description: "Focused on creating responsive and interactive user interfaces for various client projects. Worked closely with designers to implement pixel-perfect designs.",
-      achievements: [
-        "Delivered 5 responsive websites with 100% client satisfaction",
-        "Reduced page load times by 35% through code optimization",
-        "Mentored 2 junior developers in React best practices"
-      ],
-      technologies: ["React", "TypeScript", "Tailwind CSS", "Next.js"],
-      gradient: "from-purple-500 to-pink-500"
-    },
-    {
-      id: 3,
-      title: "Web Development Bootcamp",
-      company: "CodeAcademy Pro",
-      location: "Online",
-      period: "Sep 2023 - Dec 2023",
-      type: "Education",
-      description: "Intensive full-stack web development program covering modern technologies and industry best practices. Completed multiple projects and received certifications.",
-      achievements: [
-        "Graduated with honors from intensive 16-week program",
-        "Built 10+ projects including full-stack applications",
-        "Received certifications in React, Node.js, and Database Design"
-      ],
-      technologies: ["HTML", "CSS", "JavaScript", "React", "Node.js", "MongoDB"],
-      gradient: "from-green-500 to-emerald-500"
-    }
+    // {
+    //   id: 2,
+    //   title: "Frontend Developer",
+    //   company: "StartupHub",
+    //   location: "Hybrid",
+    //   period: "Jan 2024 - May 2024",
+    //   type: "Part-time",
+    //   description: "Focused on creating responsive and interactive user interfaces for various client projects. Worked closely with designers to implement pixel-perfect designs.",
+    //   achievements: [
+    //     "Delivered 5 responsive websites with 100% client satisfaction",
+    //     "Reduced page load times by 35% through code optimization",
+    //     "Mentored 2 junior developers in React best practices"
+    //   ],
+    //   technologies: ["React", "TypeScript", "Tailwind CSS", "Next.js"],
+    //   gradient: "from-purple-500 to-pink-500",
+    //   websiteUrl: "https://startuphub.io"
+    // },
+    // {
+    //   id: 3,
+    //   title: "Web Development Bootcamp",
+    //   company: "CodeAcademy Pro",
+    //   location: "Online",
+    //   period: "Sep 2023 - Dec 2023",
+    //   type: "Education",
+    //   description: "Intensive full-stack web development program covering modern technologies and industry best practices. Completed multiple projects and received certifications.",
+    //   achievements: [
+    //     "Graduated with honors from intensive 16-week program",
+    //     "Built 10+ projects including full-stack applications",
+    //     "Received certifications in React, Node.js, and Database Design"
+    //   ],
+    //   technologies: ["HTML", "CSS", "JavaScript", "React", "Node.js", "MongoDB"],
+    //   gradient: "from-green-500 to-emerald-500",
+    //   websiteUrl: "https://codecademy.com"
+    // }
   ];
 
   return (
@@ -97,10 +100,16 @@ const Experience = () => {
                           <Calendar size={16} />
                           <span>{exp.period}</span>
                         </div>
-                        <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+                        <a
+                          href={exp.websiteUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-accent transition-colors cursor-pointer group"
+                        >
                           <MapPin size={16} />
                           <span>{exp.location}</span>
-                        </div>
+                          <ExternalLink size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                        </a>
                       </div>
                     </div>
 
