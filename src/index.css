@@ -230,4 +230,24 @@
       transform: translateX(0);
     }
   }
+  
+  /* Safe paddings for viewport-aware elements */
+  .safe-paddings {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+  
+  /* Responsive image container */
+  .profile-image-container {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0 1rem;
+    /* Add viewport safe areas for notched devices */
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
 }
