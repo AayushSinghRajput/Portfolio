@@ -11,7 +11,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden py-8">
+    <section id="home" className="min-h-screen flex flex-col justify-center relative overflow-hidden pt-16 pb-8 sm:pt-20 md:pt-24">
       <div className="absolute inset-0 bg-gradient-hero"></div>
       
       {/* Animated background elements */}
@@ -20,23 +20,23 @@ const Hero = () => {
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '1s' }}></div>
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10 mt-16 sm:mt-20 md:mt-24">
         <div className="max-w-4xl mx-auto text-center safe-paddings">
-          {/* Profile Image - Responsive container with viewport awareness */}
-          <div className="mb-8 fade-in-up profile-image-container">
-            <div className="relative inline-block">
-              {/* Progressive sizing based on viewport width */}
-              <div className="w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 lg:w-48 lg:h-48 
-                  mx-auto rounded-full overflow-hidden border-4 border-primary/20 shadow-glow">
+          {/* Profile Image - Simplified container with enhanced border */}
+          <div className="mb-8 mt-8 fade-in-up profile-image-container">
+            <div className="mt-4 sm:mt-6 md:mt-8">
+              {/* Enhanced profile image with border glow */}
+              <div 
+                className="w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 lg:w-48 lg:h-48
+                  mx-auto rounded-full overflow-hidden border-4 border-primary/30 profile-image-border"
+              >
                 <img 
                   src={profileAvatar} 
                   alt="Aayush Singh Rajput - Full Stack Developer"
                   className="w-full h-full object-cover object-center"
                   loading="eager"
-                  style={{ minWidth: '100%', minHeight: '100%' }}
                 />
               </div>
-              <div className="absolute inset-0 rounded-full bg-gradient-primary opacity-20 animate-glow"></div>
             </div>
           </div>
 

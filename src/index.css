@@ -131,6 +131,10 @@
     background: var(--glass-bg);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--glass-border);
+    /* Add safe area insets for notched devices */
+    padding-top: env(safe-area-inset-top);
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
   }
   
   /* Animations */
@@ -203,9 +207,24 @@
   @keyframes glow {
     0%, 100% {
       box-shadow: 0 0 20px hsl(var(--primary) / 0.2);
+      opacity: 0.2;
+      transform: scale(1);
     }
     50% {
       box-shadow: 0 0 40px hsl(var(--primary) / 0.4);
+      opacity: 0.3;
+      transform: scale(1.05);
+    }
+  }
+  
+  @keyframes profileGlow {
+    0%, 100% {
+      opacity: 0.25;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.4;
+      transform: scale(1.03);
     }
   }
   
@@ -237,7 +256,7 @@
     padding-right: env(safe-area-inset-right);
   }
   
-  /* Responsive image container */
+  /* Responsive image container with navbar clearance */
   .profile-image-container {
     width: 100%;
     max-width: 100%;
@@ -246,8 +265,31 @@
     align-items: center;
     margin: 0 auto;
     padding: 0 1rem;
+    /* Add navbar height clearance to ensure visibility */
+    padding-top: max(1rem, env(safe-area-inset-top));
     /* Add viewport safe areas for notched devices */
     padding-left: max(1rem, env(safe-area-inset-left));
     padding-right: max(1rem, env(safe-area-inset-right));
+    position: relative;
+    z-index: 10;
+  }
+  
+  /* Enhanced profile image border with glow */
+  .profile-image-border {
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.4), 
+                inset 0 0 10px rgba(99, 102, 241, 0.2);
+    animation: pulseBorder 3s infinite ease-in-out;
+    transition: all 0.3s ease;
+  }
+  
+  @keyframes pulseBorder {
+    0%, 100% {
+      box-shadow: 0 0 15px rgba(99, 102, 241, 0.3), 
+                  inset 0 0 8px rgba(99, 102, 241, 0.1);
+    }
+    50% {
+      box-shadow: 0 0 25px rgba(99, 102, 241, 0.5), 
+                  inset 0 0 12px rgba(99, 102, 241, 0.3);
+    }
   }
 }

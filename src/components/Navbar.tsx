@@ -32,7 +32,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`nav-glass transition-all duration-300 ${isScrolled ? 'py-4' : 'py-6'}`}>
+    <nav className={`nav-glass transition-all duration-300 ${isScrolled ? 'py-3' : 'py-4'}`} style={{ minHeight: '60px' }}>
       <div className="container mx-auto px-4 flex items-center justify-between">
         <div className="text-2xl font-bold text-gradient">
           Aayush Singh Rajput

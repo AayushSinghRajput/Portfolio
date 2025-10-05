@@ -1,0 +1,28 @@
+/* Fix for navbar overlap - ensure this gets merged into your index.css file */
+
+/* Ensure content properly clears the fixed navbar */
+section {
+  scroll-margin-top: 80px; /* Height of navbar + safety margin */
+}
+
+/* Ensure hero section has proper spacing */
+section#home {
+  scroll-margin-top: 0;
+  padding-top: calc(70px + 2rem); /* navbar height + extra padding */
+}
+
+/* Improve scrolling behavior */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 70px; /* Height of navbar */
+}
+
+@media (max-width: 640px) {
+  section#home {
+    padding-top: calc(60px + 1.5rem); /* Smaller padding on mobile */
+  }
+  
+  html {
+    scroll-padding-top: 60px; /* Smaller navbar height on mobile */
+  }
+}
