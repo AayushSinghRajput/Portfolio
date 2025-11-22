@@ -1,4 +1,5 @@
-import { Calendar, MapPin, ExternalLink } from 'lucide-react';
+import { Calendar, MapPin, ExternalLink } from "lucide-react";
+import DAV from "../../src/assets/DAV.jpg";
 
 const Experience = () => {
   const experiences = [
@@ -9,50 +10,49 @@ const Experience = () => {
       location: "Onsite",
       period: "November 2024 - December 2024",
       type: "Internship",
-      description: "Developed and maintained web applications using React, Node.js, and MongoDB. Collaborated with senior developers to implement new features and optimize existing codebase.",
+      description:
+        "Developed and maintained web applications using React, Node.js, and MongoDB. Collaborated with senior developers to implement new features and optimize existing codebase.",
       achievements: [
-        "Built 1 full-stack web applications from scratch",
+        "Built 1 full-stack web application from scratch",
         "Improved application performance by 40% through optimization",
-        "Collaborated with a team of 3 developers using Agile methodology"
+        "Collaborated with a team of 3 developers using Agile methodology",
       ],
       technologies: ["React", "Node.js", "MongoDB", "Express", "Git"],
       gradient: "from-blue-500 to-cyan-500",
-      websiteUrl: "https://bluefox.com.np/about/"
+      websiteUrl: "https://bluefox.com.np/about/",
     },
-    // {
-    //   id: 2,
-    //   title: "Frontend Developer",
-    //   company: "StartupHub",
-    //   location: "Hybrid",
-    //   period: "Jan 2024 - May 2024",
-    //   type: "Part-time",
-    //   description: "Focused on creating responsive and interactive user interfaces for various client projects. Worked closely with designers to implement pixel-perfect designs.",
-    //   achievements: [
-    //     "Delivered 5 responsive websites with 100% client satisfaction",
-    //     "Reduced page load times by 35% through code optimization",
-    //     "Mentored 2 junior developers in React best practices"
-    //   ],
-    //   technologies: ["React", "TypeScript", "Tailwind CSS", "Next.js"],
-    //   gradient: "from-purple-500 to-pink-500",
-    //   websiteUrl: "https://startuphub.io"
-    // },
-    // {
-    //   id: 3,
-    //   title: "Web Development Bootcamp",
-    //   company: "CodeAcademy Pro",
-    //   location: "Online",
-    //   period: "Sep 2023 - Dec 2023",
-    //   type: "Education",
-    //   description: "Intensive full-stack web development program covering modern technologies and industry best practices. Completed multiple projects and received certifications.",
-    //   achievements: [
-    //     "Graduated with honors from intensive 16-week program",
-    //     "Built 10+ projects including full-stack applications",
-    //     "Received certifications in React, Node.js, and Database Design"
-    //   ],
-    //   technologies: ["HTML", "CSS", "JavaScript", "React", "Node.js", "MongoDB"],
-    //   gradient: "from-green-500 to-emerald-500",
-    //   websiteUrl: "https://codecademy.com"
-    // }
+
+    {
+      id: 2,
+      title: "Hackathon Participant & Mobile App Developer",
+      company: "DAV Codefest 2025",
+      location: "Onsite",
+      period: "July 2025",
+      type: "Hackathon",
+      description:
+        "Participated in the national-level DAV Codefest 2025 Hackathon, where I built the SMART KRISHI mobile app — an AI-powered agriculture platform designed to support farmers with real-time crop tracking, a digital marketplace, machinery rental, and crop disease prediction using image analysis.",
+      achievements: [
+        "Built a full mobile application using React Native within Hackathon timeframe",
+        "Implemented AI-based crop disease prediction feature",
+        "Designed a real-time crop monitoring dashboard for farmers",
+        "Showcased the project to industry judges and received positive feedback",
+      ],
+      technologies: [
+        "React Native",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "REST APIs",
+        "Git",
+      ],
+      gradient: "from-green-500 to-emerald-500",
+      certificateImage: DAV,
+      projectInfo: {
+        appName: "SMART KRISHI",
+        description:
+          "SMART KRISHI is an AI-driven agriculture platform designed to support farmers by giving them real-time crop growth tracking and timely insights. It provides a digital marketplace to help farmers connect directly with buyers, machinery rental services, and AI-based crop disease prediction through image uploads, helping farmers identify problems early and avoid losses.",
+      },
+    },
   ];
 
   return (
@@ -77,7 +77,7 @@ const Experience = () => {
 
             <div className="space-y-12">
               {experiences.map((exp, index) => (
-                <div 
+                <div
                   key={exp.id}
                   className={`relative fade-in-up stagger-${Math.min(index + 1, 4)}`}
                 >
@@ -89,23 +89,21 @@ const Experience = () => {
                     {/* Header */}
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                       <div>
-                        <h3 className="text-xl font-bold text-foreground mb-1">{exp.title}</h3>
+                        <h3 className="text-xl font-bold text-foreground mb-1">
+                          {exp.title}
+                        </h3>
                         <div className="flex items-center space-x-2 text-accent font-medium">
                           <span>{exp.company}</span>
                           <ExternalLink size={16} />
                         </div>
                       </div>
+
                       <div className="flex flex-col md:items-end mt-2 md:mt-0">
                         <div className="flex items-center space-x-2 text-sm text-muted-foreground mb-1">
                           <Calendar size={16} />
                           <span>{exp.period}</span>
                         </div>
-                        <a
-                          href={exp.websiteUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-accent transition-colors cursor-pointer group"
-                        >
+
                         <a
                           href={exp.websiteUrl}
                           target="_blank"
@@ -114,16 +112,19 @@ const Experience = () => {
                         >
                           <MapPin size={16} />
                           <span>{exp.location}</span>
-                          <ExternalLink size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
-                        </a>
-                          <ExternalLink size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                          <ExternalLink
+                            size={14}
+                            className="opacity-0 group-hover:opacity-100 transition-opacity"
+                          />
                         </a>
                       </div>
                     </div>
 
                     {/* Type Badge */}
                     <div className="mb-4">
-                      <span className={`px-3 py-1 text-xs font-medium rounded-full bg-gradient-to-r ${exp.gradient} text-white`}>
+                      <span
+                        className={`px-3 py-1 text-xs font-medium rounded-full bg-gradient-to-r ${exp.gradient} text-white`}
+                      >
                         {exp.type}
                       </span>
                     </div>
@@ -133,12 +134,42 @@ const Experience = () => {
                       {exp.description}
                     </p>
 
+                    {/* Project Info */}
+                    {exp.projectInfo && (
+                      <div className="mb-4">
+                        <h4 className="font-semibold mb-2 text-foreground">
+                          {exp.projectInfo.appName}:
+                        </h4>
+                        <p className="text-muted-foreground leading-relaxed">
+                          {exp.projectInfo.description}
+                        </p>
+                      </div>
+                    )}
+
+                    {/* Certificate Preview */}
+                    {exp.certificateImage && (
+                      <div className="mb-4">
+                        <h4 className="font-semibold mb-2 text-foreground">Certificate:</h4>
+                        <img
+                          src={exp.certificateImage}
+                          alt="Certificate"
+                          className="w-auto h-auto rounded-lg shadow-md border cursor-pointer hover:scale-105 transition-transform"
+                          onClick={() =>
+                            window.open(exp.certificateImage, "_blank", "noopener noreferrer")
+                          }
+                        />
+                      </div>
+                    )}
+
                     {/* Achievements */}
                     <div className="mb-4">
                       <h4 className="font-semibold mb-2 text-foreground">Key Achievements:</h4>
                       <ul className="space-y-1">
                         {exp.achievements.map((achievement, achIndex) => (
-                          <li key={achIndex} className="text-sm text-muted-foreground flex items-start">
+                          <li
+                            key={achIndex}
+                            className="text-sm text-muted-foreground flex items-start"
+                          >
                             <span className="w-1.5 h-1.5 bg-accent rounded-full mt-2 mr-3 flex-shrink-0"></span>
                             {achievement}
                           </li>
@@ -151,7 +182,7 @@ const Experience = () => {
                       <h4 className="font-semibold mb-2 text-foreground">Technologies Used:</h4>
                       <div className="flex flex-wrap gap-2">
                         {exp.technologies.map((tech, techIndex) => (
-                          <span 
+                          <span
                             key={techIndex}
                             className="px-3 py-1 text-xs font-medium bg-muted rounded-full text-muted-foreground"
                           >
@@ -176,15 +207,19 @@ const Experience = () => {
                 I'm actively seeking new opportunities to grow and contribute to innovative projects.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a 
-                  href="/resume.pdf" 
+                <a
+                  href="/resume.pdf"
                   download
                   className="inline-flex items-center justify-center px-6 py-3 bg-gradient-primary text-primary-foreground rounded-lg hover:scale-105 transition-transform font-medium"
                 >
                   Download Resume
                 </a>
-                <button 
-                  onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+                <button
+                  onClick={() =>
+                    document
+                      .querySelector("#contact")
+                      ?.scrollIntoView({ behavior: "smooth" })
+                  }
                   className="px-6 py-3 border border-border rounded-lg hover:scale-105 transition-transform font-medium"
                 >
                   Get In Touch
@@ -192,6 +227,7 @@ const Experience = () => {
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
