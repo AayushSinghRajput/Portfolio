@@ -1,5 +1,6 @@
 import { Calendar, MapPin, ExternalLink } from "lucide-react";
 import DAV from "../../src/assets/DAV.jpg";
+import JANAKPUR_HACKATHON from "../../src/assets/Janakpur.jpg";
 
 const Experience = () => {
   const experiences = [
@@ -53,6 +54,50 @@ const Experience = () => {
           "SMART KRISHI is an AI-driven agriculture platform designed to support farmers by giving them real-time crop growth tracking and timely insights. It provides a digital marketplace to help farmers connect directly with buyers, machinery rental services, and AI-based crop disease prediction through image uploads, helping farmers identify problems early and avoid losses.",
       },
     },
+
+    {
+      id: 3,
+      title: "Hackathon Participant & Full-Stack Developer",
+      company: "Janakpur Hackathon 2.0",
+      location: "Onsite",
+      period: "December 2025",
+      type: "Hackathon",
+      description:
+        "Participated in Janakpur Hackathon 2.0 where our team developed 'Anonymous Incident Reporting and Evidence Vault' — a web application that empowers citizens to report incidents anonymously and connect with relevant NGOs for support. The platform includes a legal chatbot that provides guidance based on Nepal's constitution.",
+      achievements: [
+        "Achieved 1st Runner Up position among all participating teams",
+        "Built a complete full-stack web application within 24 hours",
+        "Implemented an AI-powered legal chatbot using LangChain and RAG",
+        "Developed anonymous reporting system with category-based NGO matching",
+      ],
+      technologies: [
+        "React",
+        "Tailwind CSS",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "FastAPI",
+        "LangChain",
+        "RAG",
+        "Git",
+      ],
+      gradient: "from-purple-500 to-pink-500",
+      certificateImage: JANAKPUR_HACKATHON,
+      websiteUrl: "https://www.facebook.com/profile.php?id=61580937292918",
+      projectInfo: {
+        appName: "Anonymous Incident Reporting and Evidence Vault",
+        description:
+          "A secure web platform that allows citizens to report incidents anonymously while maintaining their privacy. The system categorizes reports and connects users with relevant NGOs based on the incident type. Features include a legal chatbot powered by AI that provides guidance according to Nepal's Constitution 2072, evidence submission, and direct communication channels with NGOs. The platform aims to bridge the gap between citizens in need and organizations that can help.",
+        features: [
+          "Anonymous incident reporting with evidence upload",
+          "AI-powered legal chatbot based on Nepal Constitution 2072",
+          "NGO directory categorized by expertise areas",
+          "Secure communication channel between reporters and NGOs",
+          "Real-time notification system",
+          "Admin dashboard for report management",
+        ],
+      },
+    },
   ];
 
   return (
@@ -65,7 +110,8 @@ const Experience = () => {
               Experience & <span className="text-gradient">Journey</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              My professional journey and key milestones in full-stack development
+              My professional journey and key milestones in full-stack
+              development
             </p>
             <div className="w-24 h-1 bg-gradient-primary mx-auto rounded-full mt-6"></div>
           </div>
@@ -79,7 +125,10 @@ const Experience = () => {
               {experiences.map((exp, index) => (
                 <div
                   key={exp.id}
-                  className={`relative fade-in-up stagger-${Math.min(index + 1, 4)}`}
+                  className={`relative fade-in-up stagger-${Math.min(
+                    index + 1,
+                    4
+                  )}`}
                 >
                   {/* Timeline Dot */}
                   <div className="absolute left-6 w-4 h-4 bg-gradient-primary rounded-full border-4 border-background hidden md:block"></div>
@@ -93,8 +142,15 @@ const Experience = () => {
                           {exp.title}
                         </h3>
                         <div className="flex items-center space-x-2 text-accent font-medium">
-                          <span>{exp.company}</span>
-                          <ExternalLink size={16} />
+                          <a
+                            href={exp.websiteUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center space-x-2 hover:underline"
+                          >
+                            <span>{exp.company}</span>
+                            <ExternalLink size={16} />
+                          </a>
                         </div>
                       </div>
 
@@ -104,19 +160,10 @@ const Experience = () => {
                           <span>{exp.period}</span>
                         </div>
 
-                        <a
-                          href={exp.websiteUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center space-x-2 text-sm text-muted-foreground hover:text-accent transition-colors cursor-pointer group"
-                        >
+                        <div className="flex items-center space-x-2 text-sm text-muted-foreground">
                           <MapPin size={16} />
                           <span>{exp.location}</span>
-                          <ExternalLink
-                            size={14}
-                            className="opacity-0 group-hover:opacity-100 transition-opacity"
-                          />
-                        </a>
+                        </div>
                       </div>
                     </div>
 
@@ -127,6 +174,12 @@ const Experience = () => {
                       >
                         {exp.type}
                       </span>
+                      {/* Achievement Badge for Janakpur Hackathon */}
+                      {exp.id === 3 && (
+                        <span className="ml-2 px-3 py-1 text-xs font-medium rounded-full bg-gradient-to-r from-yellow-500 to-orange-500 text-white">
+                          1st Runner Up
+                        </span>
+                      )}
                     </div>
 
                     {/* Description */}
@@ -140,30 +193,77 @@ const Experience = () => {
                         <h4 className="font-semibold mb-2 text-foreground">
                           {exp.projectInfo.appName}:
                         </h4>
-                        <p className="text-muted-foreground leading-relaxed">
+                        <p className="text-muted-foreground leading-relaxed mb-3">
                           {exp.projectInfo.description}
                         </p>
+
+                        {/* Additional Features for Janakpur Hackathon */}
+                        {exp.projectInfo.features && (
+                          <div className="mt-3">
+                            <h5 className="font-medium mb-2 text-foreground">
+                              Key Features:
+                            </h5>
+                            <ul className="space-y-1">
+                              {exp.projectInfo.features.map(
+                                (feature, featureIndex) => (
+                                  <li
+                                    key={featureIndex}
+                                    className="text-sm text-muted-foreground flex items-start"
+                                  >
+                                    <span className="w-1.5 h-1.5 bg-purple-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                                    {feature}
+                                  </li>
+                                )
+                              )}
+                            </ul>
+                          </div>
+                        )}
                       </div>
                     )}
 
                     {/* Certificate Preview */}
                     {exp.certificateImage && (
                       <div className="mb-4">
-                        <h4 className="font-semibold mb-2 text-foreground">Certificate:</h4>
-                        <img
-                          src={exp.certificateImage}
-                          alt="Certificate"
-                          className="w-auto h-auto rounded-lg shadow-md border cursor-pointer hover:scale-105 transition-transform"
-                          onClick={() =>
-                            window.open(exp.certificateImage, "_blank", "noopener noreferrer")
-                          }
-                        />
+                        <div className="flex items-center justify-between mb-2">
+                          <h4 className="font-semibold text-foreground">
+                            Certificate:
+                          </h4>
+                          <button
+                            onClick={() =>
+                              window.open(
+                                exp.certificateImage,
+                                "_blank",
+                                "noopener noreferrer"
+                              )
+                            }
+                            className="text-sm text-accent hover:underline flex items-center space-x-1"
+                          >
+                            <span>View Full Size</span>
+                            <ExternalLink size={14} />
+                          </button>
+                        </div>
+                        <div className="relative group">
+                          <img
+                            src={exp.certificateImage}
+                            alt="Certificate"
+                            className="w-full  h-auto rounded-lg shadow-md border cursor-pointer transition-transform duration-300 group-hover:scale-[1.02]"
+                            onClick={() =>
+                              window.open(
+                                exp.certificateImage,
+                                "_blank",
+                                "noopener noreferrer"
+                              )
+                            }
+                          />
+                        </div>
                       </div>
                     )}
 
                     {/* Achievements */}
                     <div className="mb-4">
-                      <h4 className="font-semibold mb-2 text-foreground">Key Achievements:</h4>
+                      <h4 className="font-semibold mb-2 text-foreground">
+                        Key Achievements:
+                      </h4>
                       <ul className="space-y-1">
                         {exp.achievements.map((achievement, achIndex) => (
                           <li
@@ -179,7 +279,9 @@ const Experience = () => {
 
                     {/* Technologies */}
                     <div>
-                      <h4 className="font-semibold mb-2 text-foreground">Technologies Used:</h4>
+                      <h4 className="font-semibold mb-2 text-foreground">
+                        Technologies Used:
+                      </h4>
                       <div className="flex flex-wrap gap-2">
                         {exp.technologies.map((tech, techIndex) => (
                           <span
@@ -204,7 +306,8 @@ const Experience = () => {
                 Ready for New <span className="text-gradient">Challenges</span>
               </h3>
               <p className="text-muted-foreground mb-6">
-                I'm actively seeking new opportunities to grow and contribute to innovative projects.
+                I'm actively seeking new opportunities to grow and contribute to
+                innovative projects.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
@@ -227,7 +330,6 @@ const Experience = () => {
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>
