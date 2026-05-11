@@ -1,13 +1,15 @@
-import { 
-  Code, 
-  Database, 
-  Globe, 
-  GitBranch, 
-  Server, 
+import {
+  Code,
+  Database,
+  Globe,
+  GitBranch,
+  Server,
   Smartphone,
   Palette,
-  Zap
-} from 'lucide-react';
+  Zap,
+  Terminal,
+  Rocket,
+} from "lucide-react";
 
 const Skills = () => {
   const skillCategories = [
@@ -20,8 +22,8 @@ const Skills = () => {
         { name: "CSS3", level: 90 },
         { name: "JavaScript", level: 80 },
         { name: "React", level: 90 },
-        { name: "Next.js", level: 75 }
-      ]
+        { name: "Next.js", level: 75 },
+      ],
     },
     {
       title: "Backend",
@@ -30,9 +32,10 @@ const Skills = () => {
       skills: [
         { name: "Node.js", level: 85 },
         { name: "Express", level: 80 },
+        {name:"FastAPI",level:75},
         { name: "RESTful APIs", level: 75 },
-        { name: "Authentication", level: 80 }
-      ]
+        { name: "Authentication", level: 80 },
+      ],
     },
     {
       title: "Database",
@@ -41,9 +44,10 @@ const Skills = () => {
       skills: [
         { name: "MongoDB", level: 90 },
         { name: "MySQL", level: 75 },
+        {name:"PostgreSQL",level:70},
         { name: "Database Design", level: 80 },
-        { name: "Data Modeling", level: 70 }
-      ]
+        { name: "Data Modeling", level: 70 },
+      ],
     },
     {
       title: "Tools & Others",
@@ -53,21 +57,23 @@ const Skills = () => {
         { name: "Git/GitHub", level: 90 },
         { name: "Responsive Design", level: 95 },
         { name: "Problem Solving", level: 85 },
-        { name: "Team Collaboration", level: 90 }
-      ]
-    }
+        { name: "Team Collaboration", level: 90 },
+      ],
+    },
   ];
 
-  const techIcons = [
-    { name: "React", icon: Globe, color: "text-blue-400" },
-    { name: "Node.js", icon: Server, color: "text-green-400" },
-    { name: "MongoDB", icon: Database, color: "text-green-500" },
-    { name: "JavaScript", icon: Code, color: "text-yellow-400" },
-    { name: "Git", icon: GitBranch, color: "text-orange-400" },
-    { name: "CSS3", icon: Palette, color: "text-blue-500" },
-    { name: "Express", icon: Zap, color: "text-purple-400" },
-    { name: "Next.js", icon: Smartphone, color: "text-gray-300" }
-  ];
+const techIcons = [
+  { name: "React", icon: Globe, color: "text-blue-400" },
+  { name: "Node.js", icon: Server, color: "text-green-400" },
+  { name: "MongoDB", icon: Database, color: "text-green-500" },
+  { name: "JavaScript", icon: Code, color: "text-yellow-400" },
+  { name: "Python", icon: Terminal, color: "text-yellow-500" },
+  { name: "FastAPI", icon: Rocket, color: "text-teal-400" },
+  { name: "Git", icon: GitBranch, color: "text-orange-400" },
+  { name: "CSS3", icon: Palette, color: "text-blue-500" },
+  { name: "Express", icon: Zap, color: "text-purple-400" },
+  { name: "Next.js", icon: Smartphone, color: "text-gray-300" },
+];
 
   return (
     <section id="skills" className="py-20 relative">
@@ -87,15 +93,19 @@ const Skills = () => {
           {/* Tech Icons Grid */}
           <div className="grid grid-cols-4 md:grid-cols-8 gap-6 mb-16 fade-in-up stagger-1">
             {techIcons.map((tech, index) => (
-              <div 
+              <div
                 key={index}
                 className="flex flex-col items-center space-y-2 skill-card animate-float"
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
-                <div className={`p-4 rounded-lg bg-gradient-to-br ${tech.color} bg-opacity-10`}>
+                <div
+                  className={`p-4 rounded-lg bg-gradient-to-br ${tech.color} bg-opacity-10`}
+                >
                   <tech.icon size={32} className={tech.color} />
                 </div>
-                <span className="text-sm font-medium text-center">{tech.name}</span>
+                <span className="text-sm font-medium text-center">
+                  {tech.name}
+                </span>
               </div>
             ))}
           </div>
@@ -103,9 +113,14 @@ const Skills = () => {
           {/* Skills Categories */}
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 fade-in-up stagger-2">
             {skillCategories.map((category, categoryIndex) => (
-              <div key={categoryIndex} className="glass-card p-6 hover:scale-105 transition-transform">
+              <div
+                key={categoryIndex}
+                className="glass-card p-6 hover:scale-105 transition-transform"
+              >
                 <div className="flex items-center space-x-3 mb-6">
-                  <div className={`p-3 rounded-lg bg-gradient-to-r ${category.color}`}>
+                  <div
+                    className={`p-3 rounded-lg bg-gradient-to-r ${category.color}`}
+                  >
                     <category.icon size={24} className="text-white" />
                   </div>
                   <h3 className="text-xl font-bold">{category.title}</h3>
@@ -115,15 +130,19 @@ const Skills = () => {
                   {category.skills.map((skill, skillIndex) => (
                     <div key={skillIndex} className="space-y-2">
                       <div className="flex justify-between items-center">
-                        <span className="text-sm font-medium">{skill.name}</span>
-                        <span className="text-xs text-muted-foreground">{skill.level}%</span>
+                        <span className="text-sm font-medium">
+                          {skill.name}
+                        </span>
+                        <span className="text-xs text-muted-foreground">
+                          {skill.level}%
+                        </span>
                       </div>
                       <div className="w-full bg-muted rounded-full h-2">
-                        <div 
+                        <div
                           className={`h-2 rounded-full bg-gradient-to-r ${category.color} transition-all duration-1000 ease-out`}
-                          style={{ 
+                          style={{
                             width: `${skill.level}%`,
-                            animationDelay: `${(categoryIndex * 4 + skillIndex) * 0.1}s`
+                            animationDelay: `${(categoryIndex * 4 + skillIndex) * 0.1}s`,
                           }}
                         ></div>
                       </div>
@@ -140,11 +159,18 @@ const Skills = () => {
               { number: "20+", label: "Projects Completed" },
               { number: "5+", label: "Technologies Mastered" },
               { number: "100%", label: "Client Satisfaction" },
-              { number: "24/7", label: "Learning Mode" }
+              { number: "24/7", label: "Learning Mode" },
             ].map((stat, index) => (
-              <div key={index} className="text-center glass-card p-6 hover:scale-105 transition-transform">
-                <div className="text-3xl font-bold text-gradient mb-2">{stat.number}</div>
-                <div className="text-sm text-muted-foreground">{stat.label}</div>
+              <div
+                key={index}
+                className="text-center glass-card p-6 hover:scale-105 transition-transform"
+              >
+                <div className="text-3xl font-bold text-gradient mb-2">
+                  {stat.number}
+                </div>
+                <div className="text-sm text-muted-foreground">
+                  {stat.label}
+                </div>
               </div>
             ))}
           </div>

@@ -135,7 +135,7 @@ const Footer = () => {
           {/* Tech Stack Credits */}
           <div className="text-center mt-8 pt-8 border-t border-border">
             <p className="text-xs text-muted-foreground">
-              Built with React, TypeScript, Tailwind CSS, and shadcn/ui
+              Built with React, TypeScript, and Tailwind CSS.
             </p>
           </div>
         </div>

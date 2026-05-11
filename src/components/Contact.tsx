@@ -85,7 +85,7 @@ const Contact = () => {
     {
       icon: MapPin,
       title: "Location",
-      value: "Dharan, Nepal",
+      value: "Kathmandu, Nepal",
       link: null,
     },
   ];

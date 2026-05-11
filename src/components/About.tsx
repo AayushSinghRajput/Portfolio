@@ -10,7 +10,7 @@ const About = () => {
     {
       icon: Database,
       title: "Backend Development", 
-      description: "Building robust server-side applications with Node.js, Express, and RESTful API design."
+      description: "Building robust server-side applications with Node.js, Express, FastAPI and RESTful API design."
     },
     {
       icon: Globe,
@@ -48,7 +48,7 @@ const About = () => {
                 
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   I specialize in creating seamless digital experiences using technologies like 
-                  <span className="text-accent font-medium"> React, Next.js, Node.js, Express, and MongoDB</span>. 
+                  <span className="text-accent font-medium"> React, Next.js, Node.js, Express, MySQL, PostgresSQL and MongoDB</span>. 
                   My approach combines clean code practices with user-centered design principles.
                 </p>
 
@@ -61,7 +61,7 @@ const About = () => {
 
               {/* Skills Tags */}
               <div className="flex flex-wrap gap-3">
-                {['HTML', 'CSS', 'JavaScript', 'Tailwind CSS','React', 'Next.js', 'Node.js', 'Express', 'MongoDB', 'Git/GitHub', 'RESTful APIs'].map((skill) => (
+                {['HTML', 'CSS', 'JavaScript','Python', 'Tailwind CSS','React', 'Next.js', 'Node.js', 'Express',"FastAPI","MySQL","PostgreSQL", 'MongoDB', 'Git/GitHub', 'RESTful APIs'].map((skill) => (
                   <span 
                     key={skill}
                     className="px-4 py-2 glass-card text-sm font-medium hover:scale-105 transition-transform"

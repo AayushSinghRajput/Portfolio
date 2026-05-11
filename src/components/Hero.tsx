@@ -44,7 +44,7 @@ const Hero = () => {
           <div className="space-y-6">
             <div className="fade-in-up stagger-1">
               <h1 className="text-5xl md:text-7xl font-bold mb-4">
-                <span className="text-gradient">Aayush Singh Rajput</span>
+                <span className="text-gradient">Aayush Kumar Singh</span>
               </h1>
               <div className="text-2xl md:text-3xl text-accent font-semibold mb-6">
                 Full Stack Developer
