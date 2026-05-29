@@ -1,43 +1,18 @@
-import { Heart, Github, Linkedin, Mail, ArrowUp } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Heart, ArrowUp } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { quickLinks, socialLinks } from "../assets/assets";
 
 const Footer = () => {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const currentYear = new Date().getFullYear();
 
-  const quickLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' }
-  ];
-
-  const socialLinks = [
-    {
-      icon: Github,
-      href: 'ttps://github.com/AayushSinghRajput',
-      label: 'GitHub'
-    },
-    {
-      icon: Linkedin,
-      href: 'https://www.linkedin.com/in/aayush-singh-rajput-7314b7279/',
-      label: 'LinkedIn'
-    },
-    {
-      icon: Mail,
-      href: 'mailto:aayushsinghrajput3003@gmail.com',
-      label: 'Email'
-    }
-  ];
-
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -50,11 +25,11 @@ const Footer = () => {
             {/* Brand Section */}
             <div className="space-y-4">
               <h3 className="text-2xl font-bold text-gradient">
-                Aayush Singh Rajput
+                Aayush Kumar Singh
               </h3>
               <p className="text-muted-foreground leading-relaxed">
-                Full Stack Developer passionate about creating modern, 
-                efficient web solutions that make a difference.
+                Full Stack Developer & ML Engineer building scalable web
+                applications and intelligent AI systems.
               </p>
               <div className="flex space-x-4">
                 {socialLinks.map((social) => (
@@ -93,19 +68,20 @@ const Footer = () => {
               <h4 className="text-lg font-semibold">Get In Touch</h4>
               <div className="space-y-2">
                 <p className="text-muted-foreground">
-                  Ready to start your next project?
+                  Open to full-time roles, freelance projects, and
+                  collaborations.
                 </p>
-                <a 
-                  href="mailto:aayush@example.com"
+                <a
+                  href="mailto:aayushsinghrajput2002@gmail.com"
                   className="text-accent hover:text-accent-glow transition-colors"
                 >
-                  aayushsinghrajput3003@gmail.com
+                  aayushsinghrajput2002@gmail.com
                 </a>
               </div>
-              <Button 
+              <Button
                 size="sm"
                 className="gradient-primary hover:scale-105 transition-transform"
-                onClick={() => scrollToSection('#contact')}
+                onClick={() => scrollToSection("#contact")}
               >
                 Let's Work Together
               </Button>
@@ -115,8 +91,7 @@ const Footer = () => {
           {/* Bottom Section */}
           <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-border">
             <div className="flex items-center space-x-2 text-muted-foreground text-sm mb-4 md:mb-0">
-              <span>© {currentYear} Aayush Singh Rajput. Made with</span>
-              <Heart size={16} className="text-accent fill-accent" />
+              <span>© {currentYear} Aayush Kumar Singh. Made with</span>
               <span>using React & TypeScript</span>
             </div>
 

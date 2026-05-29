@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Home, User, Code, Briefcase, Mail } from 'lucide-react';
+import { Menu, X, Home, User, Code, Briefcase, Mail, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Navbar = () => {
@@ -20,6 +20,7 @@ const Navbar = () => {
     { name: 'About', href: '#about', icon: User },
     { name: 'Skills', href: '#skills', icon: Code },
     { name: 'Projects', href: '#projects', icon: Briefcase },
+    { name: 'Experience', href: '#experience', icon: BookOpen },
     { name: 'Contact', href: '#contact', icon: Mail },
   ];
 
@@ -35,7 +36,7 @@ const Navbar = () => {
     <nav className={`nav-glass transition-all duration-300 ${isScrolled ? 'py-3' : 'py-4'}`} style={{ minHeight: '60px' }}>
       <div className="container mx-auto px-4 flex items-center justify-between">
         <div className="text-2xl font-bold text-gradient">
-          Aayush Kumar Singh 
+          Aayush Kumar Singh
         </div>
 
         {/* Desktop Navigation */}

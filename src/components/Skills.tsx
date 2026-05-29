@@ -1,80 +1,6 @@
-import {
-  Code,
-  Database,
-  Globe,
-  GitBranch,
-  Server,
-  Smartphone,
-  Palette,
-  Zap,
-  Terminal,
-  Rocket,
-} from "lucide-react";
+import { skillCategories, techIcons, bottomStats } from "../assets/assets";
 
 const Skills = () => {
-  const skillCategories = [
-    {
-      title: "Frontend",
-      icon: Code,
-      color: "from-blue-500 to-cyan-500",
-      skills: [
-        { name: "HTML5", level: 95 },
-        { name: "CSS3", level: 90 },
-        { name: "JavaScript", level: 80 },
-        { name: "React", level: 90 },
-        { name: "Next.js", level: 75 },
-      ],
-    },
-    {
-      title: "Backend",
-      icon: Server,
-      color: "from-green-500 to-emerald-500",
-      skills: [
-        { name: "Node.js", level: 85 },
-        { name: "Express", level: 80 },
-        {name:"FastAPI",level:75},
-        { name: "RESTful APIs", level: 75 },
-        { name: "Authentication", level: 80 },
-      ],
-    },
-    {
-      title: "Database",
-      icon: Database,
-      color: "from-purple-500 to-pink-500",
-      skills: [
-        { name: "MongoDB", level: 90 },
-        { name: "MySQL", level: 75 },
-        {name:"PostgreSQL",level:70},
-        { name: "Database Design", level: 80 },
-        { name: "Data Modeling", level: 70 },
-      ],
-    },
-    {
-      title: "Tools & Others",
-      icon: GitBranch,
-      color: "from-orange-500 to-red-500",
-      skills: [
-        { name: "Git/GitHub", level: 90 },
-        { name: "Responsive Design", level: 95 },
-        { name: "Problem Solving", level: 85 },
-        { name: "Team Collaboration", level: 90 },
-      ],
-    },
-  ];
-
-const techIcons = [
-  { name: "React", icon: Globe, color: "text-blue-400" },
-  { name: "Node.js", icon: Server, color: "text-green-400" },
-  { name: "MongoDB", icon: Database, color: "text-green-500" },
-  { name: "JavaScript", icon: Code, color: "text-yellow-400" },
-  { name: "Python", icon: Terminal, color: "text-yellow-500" },
-  { name: "FastAPI", icon: Rocket, color: "text-teal-400" },
-  { name: "Git", icon: GitBranch, color: "text-orange-400" },
-  { name: "CSS3", icon: Palette, color: "text-blue-500" },
-  { name: "Express", icon: Zap, color: "text-purple-400" },
-  { name: "Next.js", icon: Smartphone, color: "text-gray-300" },
-];
-
   return (
     <section id="skills" className="py-20 relative">
       <div className="container mx-auto px-4">
@@ -91,7 +17,7 @@ const techIcons = [
           </div>
 
           {/* Tech Icons Grid */}
-          <div className="grid grid-cols-4 md:grid-cols-8 gap-6 mb-16 fade-in-up stagger-1">
+          <div className="grid grid-cols-4 md:grid-cols-7 gap-6 mb-16 fade-in-up stagger-1">
             {techIcons.map((tech, index) => (
               <div
                 key={index}
@@ -111,7 +37,7 @@ const techIcons = [
           </div>
 
           {/* Skills Categories */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 fade-in-up stagger-2">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 fade-in-up stagger-2">
             {skillCategories.map((category, categoryIndex) => (
               <div
                 key={categoryIndex}
@@ -155,12 +81,7 @@ const techIcons = [
 
           {/* Bottom Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 fade-in-up stagger-3">
-            {[
-              { number: "20+", label: "Projects Completed" },
-              { number: "5+", label: "Technologies Mastered" },
-              { number: "100%", label: "Client Satisfaction" },
-              { number: "24/7", label: "Learning Mode" },
-            ].map((stat, index) => (
+            {bottomStats.map((stat, index) => (
               <div
                 key={index}
                 className="text-center glass-card p-6 hover:scale-105 transition-transform"
