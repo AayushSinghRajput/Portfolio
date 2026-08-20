@@ -4,8 +4,6 @@ import cors from "cors";
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import contactRoutes from "./routes/contactRoutes.js";
-import path from "path";
-import { fileURLToPath } from "url";
 
 
 
@@ -62,7 +60,8 @@ const simpleRateLimiter = (req, res, next) => {
 // Configure CORS to allow requests from both the deployed frontend and localhost
 app.use(cors({
   origin: [
-    'https://portfolio-taupe-two-ivi4t6cgf8.vercel.app', 
+    'https://portfolio-taupe-two-ivi4t6cgf8.vercel.app',
+    'https://www.aayushkumarsingh.com.np',
     'http://localhost:8080',
     'http://192.168.1.64:8080'  
   ],
