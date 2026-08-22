@@ -25,6 +25,7 @@ import {
   Briefcase,
   Trophy,
   Leaf,
+  GraduationCap,
 } from "lucide-react";
 import nexalarisCertificate from "./nexalaris_certificate.png";
 import davCertificate from "./DAV.jpg";
@@ -462,7 +463,8 @@ export const projects = [
       "Tailwind CSS",
     ],
     icon: ShoppingCart,
-    github: "https://github.com/AayushSinghRajput/GreenCart---Grocery-WebApp.git",
+    github:
+      "https://github.com/AayushSinghRajput/GreenCart---Grocery-WebApp.git",
     demo: "https://green-cart-grocery-web-app.vercel.app",
     gradient: "from-emerald-500 to-teal-500",
     category: "Web Development",
@@ -484,6 +486,18 @@ export const projects = [
     github: "https://github.com/AayushSinghRajput/Thumblify.git",
     demo: "https://thumblify-six-flame.vercel.app",
     gradient: "from-violet-500 to-fuchsia-500",
+    category: "Web Development",
+  },
+  {
+    id: 4,
+    title: "TuitionMaster",
+    description:
+      "Full-stack platform connecting students with teachers, featuring teacher profiles, tuition discovery, location-based search, and secure user authentication.",
+    technologies: ["React", "Node.js", "Express.js", "MongoDB", "JWT"],
+    icon: GraduationCap,
+    github: "https://github.com/AayushSinghRajput/tutionmaster",
+    demo: "https://tuitionmaster.guru",
+    gradient: "from-blue-500 to-cyan-500",
     category: "Web Development",
   },
 
