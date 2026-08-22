@@ -503,7 +503,7 @@ export const projects = [
 
   // ── AI / ML ───────────────────────────────────────────────────
   {
-    id: 4,
+    id: 5,
     title: "SmartPrep AI",
     description:
       "Full-stack learning platform with a Next.js frontend and FastAPI backend supporting PDF uploads, multi-document ingestion, automated assessments, and RAG-powered study material generation — cutting manual study prep time by 70%.",
@@ -524,7 +524,7 @@ export const projects = [
     category: "AI / ML",
   },
   {
-    id: 5,
+    id: 6,
     title: "AI Facial Analysis & Skincare Advisor",
     description:
       "AI-powered facial analysis system that detects skin types (oily, dry, acne-prone, healthy) from image input and generates personalised skincare and cosmetic product recommendations.",
@@ -546,7 +546,7 @@ export const projects = [
     category: "AI / ML",
   },
   {
-    id: 6,
+    id: 7,
     title: "Civic-Tech Legal Chatbot",
     description:
       "Hackathon runner-up project — a civic-tech platform featuring an AI legal chatbot trained on Nepal Constitution 2072 using RAG, real-time notifications, and an NGO categorisation system for incident response.",
