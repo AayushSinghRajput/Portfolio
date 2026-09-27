@@ -249,7 +249,7 @@ export const ContactSocialLinks = [
   {
     icon: Linkedin,
     name: "LinkedIn",
-    url: "www.linkedin.com/in/aayush-kumar-singh-ce",
+    url: "https://www.linkedin.com/in/aayush-kumar-singh-ce",
     color: "hover:text-blue-400",
   },
   {
