@@ -249,7 +249,7 @@ export const ContactSocialLinks = [
   {
     icon: Linkedin,
     name: "LinkedIn",
-    url: "https://www.linkedin.com/in/aayush-singh-rajput-7314b7279/",
+    url: "www.linkedin.com/in/aayush-kumar-singh-ce",
     color: "hover:text-blue-400",
   },
   {
@@ -320,33 +320,6 @@ export const experiences: Experience[] = [
   },
   {
     id: 2,
-    title: "Frontend Developer Intern",
-    company: "BlueFox Pvt. Ltd.",
-    location: "Onsite",
-    period: "November 2024 – December 2024",
-    type: "Internship",
-    icon: Briefcase,
-    description:
-      "Built a full-stack web application from scratch and improved performance by 40% through code splitting and query optimization. Designed and documented REST APIs for a 3-developer team.",
-    achievements: [
-      "Built 1 full-stack web application from scratch using React, Node.js, Express, and MongoDB",
-      "Improved page load performance by 40% via code splitting and query optimization",
-      "Designed and documented REST APIs for a 3-developer team",
-      "Managed codebase via Git branching and code reviews",
-    ],
-    technologies: [
-      "React",
-      "Node.js",
-      "Express",
-      "MongoDB",
-      "REST APIs",
-      "Git",
-    ],
-    gradient: "from-blue-500 to-cyan-500",
-    websiteUrl: "https://bluefox.com.np/about/",
-  },
-  {
-    id: 3,
     title: "Full-Stack Developer",
     company: "Janakpur Hackathon 2.0",
     location: "Onsite",
