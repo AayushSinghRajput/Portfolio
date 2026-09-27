@@ -1,7 +1,7 @@
 const API_URL =
   window.location.hostname === "localhost"
     ? "http://localhost:5000/api/contact"
-    : "https://portfolio-backend-jax3.onrender.com/api/contact";
+    : "https://portfolio-backend-yn3w.onrender.com/api/contact";
 
 export interface ContactFormData {
   name: string;
