@@ -208,7 +208,7 @@ export const socialLinks = [
   },
   {
     icon: Linkedin,
-    href: "https://www.linkedin.com/in/aayush-singh-rajput-7314b7279/",
+    href: "https://www.linkedin.com/in/aayush-kumar-singh-ce",
     label: "LinkedIn",
   },
   {

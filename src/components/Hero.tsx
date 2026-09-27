@@ -95,7 +95,7 @@ const Hero = () => {
                 <Github size={24} />
               </a>
               <a
-                href="https://www.linkedin.com/in/aayush-singh-rajput-7314b7279/"
+                href="https://www.linkedin.com/in/aayush-kumar-singh-ce"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-full glass-card hover:scale-110 transition-transform hover:shadow-accent"
