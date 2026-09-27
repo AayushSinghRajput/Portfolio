@@ -8,7 +8,10 @@ interface ShareButtonsProps {
 
 const ShareButtons = ({ title, url }: ShareButtonsProps) => {
   const { toast } = useToast();
-  const fullUrl = `https://www.aayushkumarsingh.com.np${url}`;
+  const fullUrl =
+    typeof window !== 'undefined' && window.location.origin
+      ? `${window.location.origin}${url}`
+      : `https://www.aayushkumarsingh.com.np${url}`;
   const encoded = encodeURIComponent(fullUrl);
   const encodedTitle = encodeURIComponent(title);
 
