@@ -116,11 +116,13 @@ const BlogPost = () => {
               <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-6">
                 <span className="flex items-center gap-1.5">
                   <Calendar size={15} />
-                  {new Date(post.date).toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                  })}
+                  {post.date && !isNaN(new Date(post.date).getTime())
+                    ? new Date(post.date).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                      })
+                    : 'Recent'}
                 </span>
                 <span className="flex items-center gap-1.5">
                   <Clock size={15} />
@@ -144,6 +146,17 @@ const BlogPost = () => {
               {/* Share */}
               <ShareButtons title={post.title} url={`/blog/${post.slug}`} />
             </header>
+
+            {/* Featured Cover Banner */}
+            {post.coverImage && post.coverImage !== '/placeholder.svg' && (
+              <div className="mb-12 rounded-2xl overflow-hidden border border-border/70 shadow-2xl max-h-[460px] bg-card/60 backdrop-blur-sm">
+                <img
+                  src={post.coverImage}
+                  alt={post.title}
+                  className="w-full h-full object-cover object-center"
+                />
+              </div>
+            )}
 
             {/* Content + ToC Layout */}
             <div className="flex gap-12">

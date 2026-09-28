@@ -14,18 +14,27 @@ const BlogCard = ({ post }: BlogCardProps) => {
     >
       {/* Cover Image */}
       <div className="relative h-48 overflow-hidden bg-gradient-to-br from-primary/20 to-accent/20">
-        <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent z-10" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-16 h-16 rounded-2xl bg-gradient-primary flex items-center justify-center">
-            <span className="text-3xl font-bold text-primary-foreground">
-              {post.title.charAt(0)}
-            </span>
+        {post.coverImage && post.coverImage !== '/placeholder.svg' ? (
+          <img
+            src={post.coverImage}
+            alt={post.title}
+            className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+            loading="lazy"
+          />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-16 h-16 rounded-2xl bg-gradient-primary flex items-center justify-center shadow-lg">
+              <span className="text-3xl font-bold text-primary-foreground">
+                {post.title.charAt(0)}
+              </span>
+            </div>
           </div>
-        </div>
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/25 to-transparent z-10 pointer-events-none" />
 
         {/* Category badge */}
         <div className="absolute top-4 left-4 z-20">
-          <span className="px-3 py-1 text-xs font-semibold bg-primary/80 backdrop-blur-sm rounded-full text-white">
+          <span className="px-3 py-1 text-xs font-semibold bg-primary/80 backdrop-blur-md rounded-full text-white shadow-sm border border-white/10">
             {post.category}
           </span>
         </div>
@@ -37,11 +46,13 @@ const BlogCard = ({ post }: BlogCardProps) => {
         <div className="flex items-center gap-4 text-xs text-muted-foreground mb-3">
           <span className="flex items-center gap-1">
             <Calendar size={13} />
-            {new Date(post.date).toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'short',
-              day: 'numeric',
-            })}
+            {post.date && !isNaN(new Date(post.date).getTime())
+              ? new Date(post.date).toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'short',
+                  day: 'numeric',
+                })
+              : 'Recent'}
           </span>
           <span className="flex items-center gap-1">
             <Clock size={13} />

@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#0a0e1a"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="40%" stop-color="#ef4444"/>
+      <stop offset="100%" stop-color="#ec4899"/>
+    </linearGradient>
+    <linearGradient id="cyanAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="45%" cy="35%" r="55%">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.18"/>
+      <stop offset="60%" stop-color="#3b82f6" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur">
+      <feGaussianBlur stdDeviation="50"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="520" cy="240" r="320" fill="url(#glow)" filter="url(#blur)"/>
+
+  <!-- Subtle grid lines -->
+  <g opacity="0.07" stroke="#ffffff" stroke-width="1">
+    <line x1="100" y1="0" x2="100" y2="630"/>
+    <line x1="300" y1="0" x2="300" y2="630"/>
+    <line x1="500" y1="0" x2="500" y2="630"/>
+    <line x1="700" y1="0" x2="700" y2="630"/>
+    <line x1="900" y1="0" x2="900" y2="630"/>
+    <line x1="1100" y1="0" x2="1100" y2="630"/>
+    <line x1="0" y1="90" x2="1200" y2="90"/>
+    <line x1="0" y1="240" x2="1200" y2="240"/>
+    <line x1="0" y1="390" x2="1200" y2="390"/>
+    <line x1="0" y1="530" x2="1200" y2="530"/>
+  </g>
+
+  <!-- Badge -->
+  <rect x="100" y="75" width="230" height="34" rx="17" fill="#f59e0b" fill-opacity="0.15" stroke="#f59e0b" stroke-opacity="0.5"/>
+  <text x="215" y="97" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#fcd34d" text-anchor="middle" letter-spacing="0.06em">AI ARCHITECTURE &amp; OPTIMIZATION</text>
+
+  <!-- Title -->
+  <text x="100" y="165" font-family="system-ui, sans-serif" font-size="44" font-weight="800" fill="#ffffff" letter-spacing="-0.02em">
+    Stop Using LLMs as
+  </text>
+  <text x="100" y="222" font-family="system-ui, sans-serif" font-size="44" font-weight="800" fill="url(#accent)" letter-spacing="-0.02em">
+    Expensive If/Else Statements
+  </text>
+
+  <!-- Subtitle -->
+  <text x="100" y="278" font-family="system-ui, sans-serif" font-size="19" fill="#94a3b8">
+    Building high-performance AI systems with System 1 heuristics vs. System 2 reasoning
+  </text>
+
+  <!-- Dual Process Architecture Visual -->
+  <g transform="translate(100, 330)">
+    <!-- System 1: Fast Path -->
+    <rect x="0" y="0" width="460" height="150" rx="16" fill="#0b1329" stroke="#06b6d4" stroke-opacity="0.6" stroke-width="1.5"/>
+    <rect x="20" y="16" width="130" height="24" rx="12" fill="#06b6d4" fill-opacity="0.2"/>
+    <text x="85" y="32" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#38bdf8" text-anchor="middle">SYSTEM 1: FAST PATH</text>
+    <text x="20" y="72" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#e2e8f0">Deterministic &amp; Heuristic Layer</text>
+    <text x="20" y="96" font-family="system-ui, sans-serif" font-size="13" fill="#94a3b8">Regex • BM25 • Vector Cosine • Small Classifiers</text>
+    <g transform="translate(20, 114)">
+      <text x="0" y="16" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#10b981">⚡ &lt; 15ms Latency</text>
+      <text x="190" y="16" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#10b981">💰 $0.0000 / query</text>
+    </g>
+
+    <!-- Center Arrow Divider -->
+    <g transform="translate(480, 55)">
+      <circle cx="20" cy="20" r="22" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+      <path d="M12 20 L28 20 M22 14 L28 20 L22 26" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </g>
+
+    <!-- System 2: Slow Path -->
+    <rect x="540" y="0" width="460" height="150" rx="16" fill="#1a111a" stroke="#ec4899" stroke-opacity="0.6" stroke-width="1.5"/>
+    <rect x="560" y="16" width="160" height="24" rx="12" fill="#ec4899" fill-opacity="0.2"/>
+    <text x="640" y="32" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#f472b6" text-anchor="middle">SYSTEM 2: DEEP REASONING</text>
+    <text x="560" y="72" font-family="system-ui, sans-serif" font-size="18" font-weight="700" fill="#e2e8f0">Frontier LLM &amp; Multi-Agent Chain</text>
+    <text x="560" y="96" font-family="system-ui, sans-serif" font-size="13" fill="#94a3b8">Complex Synthesis • Tool Use • Multi-Step Logic</text>
+    <g transform="translate(560, 114)">
+      <text x="0" y="16" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#f59e0b">⏳ 1200ms - 3500ms</text>
+      <text x="190" y="16" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#f59e0b">💵 Routed only when needed</text>
+    </g>
+  </g>
+
+  <!-- Author Signature -->
+  <g transform="translate(100, 545)">
+    <text x="0" y="18" font-family="system-ui, sans-serif" font-size="16" font-weight="600" fill="#f1f5f9">Aayush Kumar Singh</text>
+    <text x="0" y="40" font-family="system-ui, sans-serif" font-size="13" fill="#64748b">Full Stack Developer &amp; ML Engineer • aayushkumarsingh.com.np</text>
+  </g>
+</svg>

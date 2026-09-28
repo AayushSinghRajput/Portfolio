@@ -75,6 +75,8 @@ export function getAllPosts(): BlogPost[] {
     const { data, content } = parseFrontmatter(raw);
 
     if (data.published === false) continue;
+    // Skip empty files with no title and no body content
+    if (!data.title && !content.trim()) continue;
 
     posts.push({
       slug,
@@ -82,7 +84,7 @@ export function getAllPosts(): BlogPost[] {
       date: (data.date as string) ?? '',
       category: (data.category as string) ?? 'General',
       tags: (data.tags as string[]) ?? [],
-      excerpt: (data.excerpt as string) ?? content.slice(0, 160) + '…',
+      excerpt: (data.excerpt as string) ?? (content.trim() ? content.slice(0, 160) + '…' : ''),
       coverImage: (data.coverImage as string) ?? '/placeholder.svg',
       readingTime: (data.readingTime as string) ?? calculateReadingTime(content),
       published: data.published !== false,
@@ -90,8 +92,12 @@ export function getAllPosts(): BlogPost[] {
     });
   }
 
-  // Sort by date descending
-  return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  // Sort by date descending safely
+  return posts.sort((a, b) => {
+    const timeA = a.date ? new Date(a.date).getTime() : 0;
+    const timeB = b.date ? new Date(b.date).getTime() : 0;
+    return (isNaN(timeB) ? 0 : timeB) - (isNaN(timeA) ? 0 : timeA);
+  });
 }
 
 export function getPostBySlug(slug: string): BlogPost | undefined {

@@ -75,7 +75,15 @@ const FeaturedBlog = () => {
                 <div className="p-6 pt-0 border-t border-border/40 mt-auto flex items-center justify-between">
                   <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
                     <Calendar size={13} />
-                    <span>{post.date}</span>
+                    <span>
+                      {post.date && !isNaN(new Date(post.date).getTime())
+                        ? new Date(post.date).toLocaleDateString('en-US', {
+                            year: 'numeric',
+                            month: 'short',
+                            day: 'numeric',
+                          })
+                        : post.date || 'Recent'}
+                    </span>
                   </div>
 
                   <Link
