@@ -7,6 +7,7 @@ import profileAvatar from "@/assets/profile_image.png";
 const ROLES = [
   "Full Stack Developer",
   "AI & ML Engineer",
+  "Technical Writer & SEO Specialist",
   "FastAPI & RAG Builder",
   "Problem Solver & Innovator",
 ];

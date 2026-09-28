@@ -35,7 +35,7 @@ const Skills = () => {
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto text-base sm:text-lg">
               A comprehensive stack spanning modern frontend frameworks, scalable backend systems,
-              AI/ML orchestration, and cloud infrastructure.
+              AI/ML orchestration, technical documentation, and SEO search strategy.
             </p>
             <div className="w-20 h-1 bg-gradient-primary mx-auto rounded-full mt-6"></div>
           </div>

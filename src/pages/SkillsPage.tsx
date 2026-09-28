@@ -11,8 +11,8 @@ const SkillsPage = () => {
     <div className="bg-background text-foreground min-h-screen flex flex-col justify-between">
       <SEOHead
         title="Technical Skills & Arsenal | Aayush Kumar Singh"
-        description="Comprehensive technical toolkit of Aayush Kumar Singh: React, Next.js, Node.js, FastAPI, Python, MongoDB, ChromaDB, RAG pipelines, and cloud tools."
-        keywords="Skills, React, FastAPI, Python, RAG, ChromaDB, Machine Learning, Full Stack, Aayush Kumar Singh"
+        description="Comprehensive technical toolkit of Aayush Kumar Singh: React, Next.js, Node.js, FastAPI, Python, MongoDB, ChromaDB, RAG pipelines, Technical Writing, and SEO Search Strategy."
+        keywords="Skills, React, FastAPI, Python, RAG, ChromaDB, Technical Writing, SEO Specialist, Google Search Console, JSON-LD Schema, Machine Learning, Full Stack, Aayush Kumar Singh"
         canonical="/skills"
         breadcrumbs={[
           { name: "Home", url: "/" },

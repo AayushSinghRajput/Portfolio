@@ -26,6 +26,11 @@ import {
   Trophy,
   Leaf,
   GraduationCap,
+  Search,
+  FileText,
+  TrendingUp,
+  BarChart3,
+  PenTool,
 } from "lucide-react";
 import nexalarisCertificate from "./nexalaris_certificate.png";
 import davCertificate from "./DAV.jpg";
@@ -68,6 +73,18 @@ export const highlights = [
     description:
       "Optimizing applications for speed and scalability — 40% load time improvements via code splitting and query optimization.",
   },
+  {
+    icon: FileText,
+    title: "Technical Writing & Docs",
+    description:
+      "Authoring complete REST API references, developer onboarding guides, and educational tutorials with clean structure.",
+  },
+  {
+    icon: TrendingUp,
+    title: "SEO & Search Strategy",
+    description:
+      "Driving organic search visibility through intent mapping, on-page & technical SEO, JSON-LD schema, and Core Web Vitals.",
+  },
 ];
 
 export const skillTags = [
@@ -102,6 +119,18 @@ export const skillTags = [
   "RESTful APIs",
   "JWT Auth",
   "Vercel",
+  // Content Writing & SEO
+  "Technical Writing",
+  "On-Page SEO",
+  "Technical SEO",
+  "Keyword Research",
+  "Google Search Console",
+  "Google Analytics (GA4)",
+  "JSON-LD Schema",
+  "Core Web Vitals",
+  "API Documentation",
+  "Prompt Engineering",
+  "Content Strategy",
 ];
 
 export const skillCategories = [
@@ -158,11 +187,36 @@ export const skillCategories = [
     icon: Brain,
     color: "from-violet-500 to-fuchsia-500",
     skills: [
-      { name: "RAG Pipelines", level: 75 },
-      { name: "LLM Integration", level: 75 },
-      { name: "NLP", level: 70 },
-      { name: "scikit-learn", level: 65 },
+      { name: "RAG Pipelines", level: 80 },
+      { name: "LLM Integration", level: 80 },
+      { name: "Prompt Engineering", level: 85 },
+      { name: "NLP", level: 75 },
+      { name: "scikit-learn", level: 70 },
       { name: "MobileNet", level: 65 },
+    ],
+  },
+  {
+    title: "SEO & Search Strategy",
+    icon: TrendingUp,
+    color: "from-emerald-500 to-teal-500",
+    skills: [
+      { name: "On-Page & Technical SEO", level: 90 },
+      { name: "Keyword & Intent Analysis", level: 85 },
+      { name: "Google Search Console & GA4", level: 85 },
+      { name: "JSON-LD & Schema Markup", level: 90 },
+      { name: "Core Web Vitals & Audits", level: 85 },
+    ],
+  },
+  {
+    title: "Content & Tech Writing",
+    icon: FileText,
+    color: "from-amber-500 to-orange-500",
+    skills: [
+      { name: "Technical & API Docs", level: 90 },
+      { name: "Long-Form Technical Blogs", level: 90 },
+      { name: "Educational Guides & FAQs", level: 95 },
+      { name: "Search Intent Mapping", level: 85 },
+      { name: "Copywriting & Proofreading", level: 85 },
     ],
   },
 ];
@@ -181,6 +235,10 @@ export const techIcons = [
   { name: "Tailwind CSS", icon: Palette, color: "text-blue-500" },
   { name: "RAG / LLM", icon: Brain, color: "text-violet-400" },
   { name: "ChromaDB", icon: Cpu, color: "text-fuchsia-400" },
+  { name: "Technical SEO", icon: Search, color: "text-emerald-400" },
+  { name: "Technical Writing", icon: FileText, color: "text-amber-400" },
+  { name: "Google Analytics", icon: BarChart3, color: "text-yellow-400" },
+  { name: "JSON-LD Schema", icon: Code, color: "text-cyan-400" },
   { name: "scikit-learn", icon: BookOpen, color: "text-orange-300" },
 ];
 
