@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { skillCategories, techIcons, bottomStats } from "../assets/assets";
 import { Sparkles, Layers, CheckCircle2 } from "lucide-react";
+import { Card3DTilt } from "./ui/Card3DTilt";
 
 const getProficiencyLabel = (level: number) => {
   if (level >= 85) return { label: "Advanced", badge: "bg-emerald-500/10 text-emerald-400 border-emerald-500/30" };
@@ -90,51 +91,52 @@ const Skills = () => {
           {/* Skills Category Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {displayedCategories.map((category, categoryIndex) => (
-              <div
-                key={categoryIndex}
-                className="glass-card p-6 rounded-2xl border border-border/70 hover:border-primary/40 transition-all duration-300 flex flex-col justify-between group"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="flex items-center space-x-3">
-                      <div className={`p-3 rounded-xl bg-gradient-to-r ${category.color} shadow-md`}>
-                        <category.icon size={22} className="text-white" />
+              <Card3DTilt key={categoryIndex} className="h-full">
+                <div
+                  className="glass-card p-6 rounded-2xl border border-border/70 hover:border-primary/40 transition-all duration-300 flex flex-col justify-between group h-full"
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="flex items-center space-x-3">
+                        <div className={`p-3 rounded-xl bg-gradient-to-r ${category.color} shadow-md`}>
+                          <category.icon size={22} className="text-white" />
+                        </div>
+                        <h3 className="text-xl font-bold tracking-tight">{category.title}</h3>
                       </div>
-                      <h3 className="text-xl font-bold tracking-tight">{category.title}</h3>
+                      <span className="text-xs font-mono text-muted-foreground/70">
+                        {category.skills.length} skills
+                      </span>
                     </div>
-                    <span className="text-xs font-mono text-muted-foreground/70">
-                      {category.skills.length} skills
-                    </span>
-                  </div>
 
-                  <div className="space-y-3.5">
-                    {category.skills.map((skill, skillIndex) => {
-                      const { label, badge } = getProficiencyLabel(skill.level);
-                      return (
-                        <div
-                          key={skillIndex}
-                          className="p-2.5 rounded-xl bg-background/40 hover:bg-background/80 border border-border/40 transition-colors flex items-center justify-between"
-                        >
-                          <div className="flex items-center gap-2.5">
-                            <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
-                            <span className="text-sm font-medium text-foreground/90">
-                              {skill.name}
+                    <div className="space-y-3.5">
+                      {category.skills.map((skill, skillIndex) => {
+                        const { label, badge } = getProficiencyLabel(skill.level);
+                        return (
+                          <div
+                            key={skillIndex}
+                            className="p-2.5 rounded-xl bg-background/40 hover:bg-background/80 border border-border/40 transition-colors flex items-center justify-between"
+                          >
+                            <div className="flex items-center gap-2.5">
+                              <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
+                              <span className="text-sm font-medium text-foreground/90">
+                                {skill.name}
+                              </span>
+                            </div>
+                            <span className={`text-[11px] font-semibold px-2 py-0.5 rounded-full border ${badge}`}>
+                              {label}
                             </span>
                           </div>
-                          <span className={`text-[11px] font-semibold px-2 py-0.5 rounded-full border ${badge}`}>
-                            {label}
-                          </span>
-                        </div>
-                      );
-                    })}
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  <div className="mt-6 pt-4 border-t border-border/40 flex items-center gap-1.5 text-xs text-muted-foreground/70">
+                    <Sparkles className="w-3.5 h-3.5 text-accent" />
+                    <span>Production & Project Tested</span>
                   </div>
                 </div>
-
-                <div className="mt-6 pt-4 border-t border-border/40 flex items-center gap-1.5 text-xs text-muted-foreground/70">
-                  <Sparkles className="w-3.5 h-3.5 text-accent" />
-                  <span>Production & Project Tested</span>
-                </div>
-              </div>
+              </Card3DTilt>
             ))}
           </div>
 

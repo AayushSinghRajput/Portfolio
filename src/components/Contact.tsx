@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 import { Send, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -6,6 +6,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { contactInfo, ContactSocialLinks } from "../assets/assets";
 import { submitContactForm, ContactFormData } from "../api/contact";
+import { Card3DTilt } from "./ui/Card3DTilt";
+
+const Contact3DCanvas = lazy(() => import("./canvas/Contact3DCanvas"));
 
 const Contact = () => {
   const [formData, setFormData] = useState<ContactFormData>({
@@ -64,63 +67,97 @@ const Contact = () => {
             <div className="w-24 h-1 bg-gradient-primary mx-auto rounded-full mt-6"></div>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
             {/* Left Column - Contact Form */}
             <div className="fade-in-up stagger-1">
-              <div className="glass-card p-8">
-                <h3 className="text-2xl font-bold mb-6">Send me a message</h3>
+              <Card3DTilt maxTilt={5}>
+                <div className="glass-card p-8">
+                  <h3 className="text-2xl font-bold mb-6">Send me a message</h3>
 
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="space-y-4">
-                    <Input
-                      type="text"
-                      name="name"
-                      placeholder="Your Name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="w-full"
-                    />
-                    <Input
-                      type="email"
-                      name="email"
-                      placeholder="Your Email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full"
-                    />
-                    <Textarea
-                      name="message"
-                      placeholder="Your Message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      rows={6}
-                      className="w-full resize-none"
-                    />
-                  </div>
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="space-y-4">
+                      <Input
+                        type="text"
+                        name="name"
+                        placeholder="Your Name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                        className="w-full"
+                      />
+                      <Input
+                        type="email"
+                        name="email"
+                        placeholder="Your Email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                        className="w-full"
+                      />
+                      <Textarea
+                        name="message"
+                        placeholder="Your Message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        required
+                        rows={6}
+                        className="w-full resize-none"
+                      />
+                    </div>
 
-                  <Button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full gradient-primary hover:scale-105 transition-transform"
-                  >
-                    {isSubmitting ? (
-                      "Sending..."
-                    ) : (
-                      <>
-                        <Send size={18} className="mr-2" />
-                        Send Message
-                      </>
-                    )}
-                  </Button>
-                </form>
-              </div>
+                    <Button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full gradient-primary hover:scale-105 transition-transform"
+                    >
+                      {isSubmitting ? (
+                        "Sending..."
+                      ) : (
+                        <>
+                          <Send size={18} className="mr-2" />
+                          Send Message
+                        </>
+                      )}
+                    </Button>
+                  </form>
+                </div>
+              </Card3DTilt>
             </div>
 
             {/* Right Column - Contact Info */}
             <div className="space-y-8 fade-in-up stagger-2">
+              {/* 3D Global Connection Globe Card */}
+              <Card3DTilt maxTilt={5}>
+                <div className="glass-card p-4 sm:p-5 relative overflow-hidden border border-border/70 rounded-2xl shadow-lg">
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center gap-2">
+                      <span className="relative flex h-2.5 w-2.5">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                      </span>
+                      <span className="text-xs font-semibold text-foreground tracking-wide">
+                        Global Collaboration Hub
+                      </span>
+                    </div>
+                    <span className="text-[11px] font-mono text-cyan-400 bg-cyan-400/10 px-2 py-0.5 rounded-full border border-cyan-400/20">
+                      Kathmandu, Nepal (UTC +5:45)
+                    </span>
+                  </div>
+                  <Suspense
+                    fallback={
+                      <div className="h-64 flex items-center justify-center text-xs text-muted-foreground">
+                        Loading 3D Globe...
+                      </div>
+                    }
+                  >
+                    <Contact3DCanvas />
+                  </Suspense>
+                  <div className="text-center text-[11px] text-muted-foreground/75 mt-1 font-mono">
+                    ✦ Connected & Available for Remote Work Worldwide
+                  </div>
+                </div>
+              </Card3DTilt>
+
               {/* Contact Information */}
               <div className="space-y-6">
                 {contactInfo.map((info, index) => (

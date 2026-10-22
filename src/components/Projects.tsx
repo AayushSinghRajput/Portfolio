@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ExternalLink, Github, Sparkles, FolderGit2, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { projects } from "@/assets/assets";
+import { Card3DTilt } from "./ui/Card3DTilt";
 
 const CATEGORIES = ["All", "Web Development", "AI / ML"];
 
@@ -63,10 +64,10 @@ const Projects = () => {
             {filtered.map((project) => {
               const hasLiveDemo = project.demo && project.demo !== "#";
               return (
-                <div
-                  key={`${activeCategory}-${project.id}`}
-                  className="glass-card rounded-2xl border border-border/70 overflow-hidden flex flex-col justify-between hover:border-primary/50 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 group"
-                >
+                <Card3DTilt key={`${activeCategory}-${project.id}`} className="h-full">
+                  <div
+                    className="glass-card rounded-2xl border border-border/70 overflow-hidden flex flex-col justify-between hover:border-primary/50 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 group h-full"
+                  >
                   <div>
                     {/* Visual Card Banner with Gradient & Icon */}
                     <div
@@ -180,7 +181,8 @@ const Projects = () => {
                     </div>
                   </div>
                 </div>
-              );
+              </Card3DTilt>
+            );
             })}
           </div>
 

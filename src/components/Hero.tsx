@@ -1,8 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { ArrowDown, Github, Linkedin, Mail, Sparkles, Terminal, FileText, Code2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import profileAvatar from "@/assets/profile_image.png";
+
+const Hero3DCanvas = lazy(() => import("@/components/canvas/Hero3DCanvas"));
 
 const ROLES = [
   "Full Stack Developer",
@@ -36,6 +38,11 @@ const Hero = () => {
     >
       {/* Dynamic Aurora & Mesh Background */}
       <div className="absolute inset-0 bg-gradient-hero"></div>
+
+      {/* 3D Interactive Geometric Glassmorphism Canvas */}
+      <Suspense fallback={null}>
+        <Hero3DCanvas />
+      </Suspense>
 
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
