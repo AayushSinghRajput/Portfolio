@@ -15,4 +15,30 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes("node_modules")) {
+            if (id.includes("three") || id.includes("@react-three") || id.includes("three-stdlib")) {
+              return "vendor-three";
+            }
+            if (id.includes("framer-motion") || id.includes("gsap") || id.includes("lenis")) {
+              return "vendor-motion";
+            }
+            if (id.includes("react-router-dom") || id.includes("react-router") || id.includes("react-dom") || id.includes("/react/")) {
+              return "vendor-react";
+            }
+            if (id.includes("lucide-react") || id.includes("@radix-ui")) {
+              return "vendor-ui";
+            }
+            if (id.includes("@tanstack")) {
+              return "vendor-query";
+            }
+          }
+        },
+      },
+    },
+    chunkSizeWarningLimit: 850,
+  },
 }));

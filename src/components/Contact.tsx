@@ -1,245 +1,343 @@
-import { useState, lazy, Suspense } from "react";
-import { Send, Download } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
-import { contactInfo, ContactSocialLinks } from "../assets/assets";
-import { submitContactForm, ContactFormData } from "../api/contact";
-import { Card3DTilt } from "./ui/Card3DTilt";
+import React, { useState } from "react";
+import { z } from "zod";
+import { Mail, Phone, MapPin, Send, CheckCircle2, AlertCircle, Github, Linkedin, ArrowUpRight, FileDown } from "lucide-react";
+import { submitContactForm } from "@/api/contact";
 
-const Contact3DCanvas = lazy(() => import("./canvas/Contact3DCanvas"));
+const contactSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters").max(100, "Name cannot exceed 100 characters"),
+  email: z.string().email("Please enter a valid email address"),
+  message: z.string().min(10, "Message must be at least 10 characters").max(3000, "Message cannot exceed 3000 characters"),
+  honeypot: z.string().optional(),
+});
 
-const Contact = () => {
-  const [formData, setFormData] = useState<ContactFormData>({
+type FormValues = z.infer<typeof contactSchema>;
+type FormErrors = Partial<Record<keyof FormValues, string>>;
+
+export const Contact: React.FC = () => {
+  const [values, setValues] = useState<FormValues>({
     name: "",
     email: "",
     message: "",
+    honeypot: "",
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
+
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [statusMessage, setStatusMessage] = useState<string>("");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setValues((prev) => ({ ...prev, [name]: value }));
+    // Clear error for field on change
+    if (errors[name as keyof FormValues]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    setSubmitStatus("idle");
+    setStatusMessage("");
 
-    const result = await submitContactForm(formData);
-
+    // Validate client-side with Zod
+    const result = contactSchema.safeParse(values);
     if (!result.success) {
-      toast({
-        title: "Failed to send message",
-        description: result.errorMessage,
-        variant: "destructive",
+      const fieldErrors: FormErrors = {};
+      result.error.errors.forEach((err) => {
+        const fieldName = err.path[0] as keyof FormValues;
+        if (!fieldErrors[fieldName]) {
+          fieldErrors[fieldName] = err.message;
+        }
       });
-    } else {
-      toast({
-        title: "Message sent successfully!",
-        description: "Thank you for reaching out. I'll get back to you soon.",
-      });
-      setFormData({ name: "", email: "", message: "" });
+      setErrors(fieldErrors);
+      setSubmitStatus("error");
+      setStatusMessage("Please correct the errors in the form before submitting.");
+      return;
     }
 
-    setIsSubmitting(false);
-  };
+    setIsSubmitting(true);
+    setErrors({});
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
+    try {
+      const apiResult = await submitContactForm({
+        name: result.data.name,
+        email: result.data.email,
+        message: result.data.message,
+        honeypot: result.data.honeypot,
+      });
+
+      if (apiResult.success) {
+        setSubmitStatus("success");
+        setStatusMessage("Thank you! Your message has been transmitted successfully. I will get back to you shortly.");
+        setValues({ name: "", email: "", message: "", honeypot: "" });
+      } else {
+        setSubmitStatus("error");
+        setStatusMessage(apiResult.errorMessage || "Submission failed. Please email directly at aayushsinghrajput2002@gmail.com.");
+      }
+    } catch {
+      setSubmitStatus("error");
+      setStatusMessage("An unexpected error occurred. Please reach out via email directly.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <section id="contact" className="py-20 relative">
-      <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-16 fade-in-up">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Get In <span className="text-gradient">Touch</span>
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Open to full-time roles, freelance projects, and collaborations.
-              Let's build something great together.
-            </p>
-            <div className="w-24 h-1 bg-gradient-primary mx-auto rounded-full mt-6"></div>
-          </div>
+    <section
+      id="contact"
+      aria-label="Contact and Inquiries"
+      className="py-24 sm:py-36 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-[#DAD4C9]"
+    >
+      {/* Section Header */}
+      <div className="flex flex-wrap items-baseline justify-between gap-4 mb-16 pb-6 border-b border-[#DAD4C9]">
+        <div>
+          <span className="font-mono text-xs text-[#77746C] tracking-widest uppercase block mb-2">
+            06 // DIRECT TRANSMISSION
+          </span>
+          <h2 className="text-h1 font-serif text-[#20201D]">
+            Have an interesting idea? Let's build it.
+          </h2>
+        </div>
+        <p className="max-w-md text-sm sm:text-base text-[#5E5B54] font-sans">
+          Open to software engineering opportunities, AI integration projects, and technical collaborations.
+        </p>
+      </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            {/* Left Column - Contact Form */}
-            <div className="fade-in-up stagger-1">
-              <Card3DTilt maxTilt={5}>
-                <div className="glass-card p-8">
-                  <h3 className="text-2xl font-bold mb-6">Send me a message</h3>
+      <div className="grid lg:grid-cols-12 gap-8 lg:gap-14 items-start">
+        {/* Left Column: Direct Coordinates & Contact Spec (5 cols) */}
+        <div className="lg:col-span-5 space-y-6">
+          <div className="bg-[#FFFFFF] border border-[#DAD4C9] p-6 sm:p-8 rounded space-y-6">
+            <span className="font-mono text-[10px] text-[#77746C] uppercase tracking-widest block">
+              COORDINATES &amp; CHANNELS
+            </span>
 
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="space-y-4">
-                      <Input
-                        type="text"
-                        name="name"
-                        placeholder="Your Name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        className="w-full"
-                      />
-                      <Input
-                        type="email"
-                        name="email"
-                        placeholder="Your Email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        className="w-full"
-                      />
-                      <Textarea
-                        name="message"
-                        placeholder="Your Message"
-                        value={formData.message}
-                        onChange={handleChange}
-                        required
-                        rows={6}
-                        className="w-full resize-none"
-                      />
-                    </div>
-
-                    <Button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full gradient-primary hover:scale-105 transition-transform"
-                    >
-                      {isSubmitting ? (
-                        "Sending..."
-                      ) : (
-                        <>
-                          <Send size={18} className="mr-2" />
-                          Send Message
-                        </>
-                      )}
-                    </Button>
-                  </form>
-                </div>
-              </Card3DTilt>
-            </div>
-
-            {/* Right Column - Contact Info */}
-            <div className="space-y-8 fade-in-up stagger-2">
-              {/* 3D Global Connection Globe Card */}
-              <Card3DTilt maxTilt={5}>
-                <div className="glass-card p-4 sm:p-5 relative overflow-hidden border border-border/70 rounded-2xl shadow-lg">
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="flex items-center gap-2">
-                      <span className="relative flex h-2.5 w-2.5">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-                      </span>
-                      <span className="text-xs font-semibold text-foreground tracking-wide">
-                        Global Collaboration Hub
-                      </span>
-                    </div>
-                    <span className="text-[11px] font-mono text-cyan-400 bg-cyan-400/10 px-2 py-0.5 rounded-full border border-cyan-400/20">
-                      Kathmandu, Nepal (UTC +5:45)
-                    </span>
-                  </div>
-                  <Suspense
-                    fallback={
-                      <div className="h-64 flex items-center justify-center text-xs text-muted-foreground">
-                        Loading 3D Globe...
-                      </div>
-                    }
-                  >
-                    <Contact3DCanvas />
-                  </Suspense>
-                  <div className="text-center text-[11px] text-muted-foreground/75 mt-1 font-mono">
-                    ✦ Connected & Available for Remote Work Worldwide
-                  </div>
-                </div>
-              </Card3DTilt>
-
-              {/* Contact Information */}
-              <div className="space-y-6">
-                {contactInfo.map((info, index) => (
-                  <div key={index} className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                      <info.icon
-                        size={20}
-                        className="text-primary-foreground"
-                      />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-foreground">
-                        {info.title}
-                      </h4>
-                      {info.link ? (
-                        <a
-                          href={info.link}
-                          className="text-muted-foreground hover:text-accent transition-colors"
-                        >
-                          {info.value}
-                        </a>
-                      ) : (
-                        <p className="text-muted-foreground">{info.value}</p>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Social Links */}
-              <div className="glass-card p-6">
-                <h4 className="font-semibold mb-4">Follow me on</h4>
-                <div className="flex space-x-4">
-                  {ContactSocialLinks.map((social) => (
-                    <a
-                      key={social.name}
-                      href={social.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`p-3 rounded-lg glass-card hover:scale-110 transition-transform ${social.color}`}
-                      aria-label={social.name}
-                    >
-                      <social.icon size={24} />
-                    </a>
-                  ))}
-                </div>
-              </div>
-
-              {/* Resume Download */}
-              <div className="glass-card p-6">
-                <h4 className="font-semibold mb-4">Resume</h4>
-                <p className="text-muted-foreground text-sm mb-4">
-                  Download my resume to learn more about my experience and
-                  skills.
-                </p>
-                <Button
-                  variant="outline"
-                  className="w-full hover:scale-105 transition-transform"
-                  asChild
+            <div className="space-y-4 font-mono text-xs text-[#5E5B54]">
+              <div className="p-3 bg-[#F5F1E8] border border-[#DAD4C9] rounded flex items-center justify-between">
+                <span className="text-[#77746C]">EMAIL:</span>
+                <a
+                  href="mailto:aayushsinghrajput2002@gmail.com"
+                  className="text-[#20201D] hover:text-[#E65336] transition-colors font-medium truncate max-w-[200px]"
                 >
-                  <a href="/resume.pdf" download>
-                    <Download size={18} className="mr-2" />
-                    Download Resume
-                  </a>
-                </Button>
+                  aayushsinghrajput2002@gmail.com
+                </a>
               </div>
 
-              {/* Availability Status */}
-              <div className="glass-card p-6">
-                <div className="flex items-center space-x-3 mb-2">
-                  <div className="w-3 h-3 bg-success rounded-full animate-pulse"></div>
-                  <h4 className="font-semibold text-success">
-                    Available for work
-                  </h4>
-                </div>
-                <p className="text-muted-foreground text-sm">
-                  Currently open to full-time roles, freelance projects, and
-                  collaborations.
-                </p>
+              <div className="p-3 bg-[#F5F1E8] border border-[#DAD4C9] rounded flex items-center justify-between">
+                <span className="text-[#77746C]">PHONE:</span>
+                <a
+                  href="tel:+9779805981168"
+                  className="text-[#20201D] hover:text-[#E65336] transition-colors"
+                >
+                  +977 980-5981168
+                </a>
+              </div>
+
+              <div className="p-3 bg-[#F5F1E8] border border-[#DAD4C9] rounded flex items-center justify-between">
+                <span className="text-[#77746C]">LOCATION:</span>
+                <span className="text-[#20201D]">Kathmandu, Nepal</span>
+              </div>
+            </div>
+
+            {/* Social & Resume Links */}
+            <div className="pt-4 border-t border-[#DAD4C9] space-y-3">
+              <span className="font-mono text-[10px] text-[#77746C] uppercase tracking-widest block">
+                PROFILES &amp; CREDENTIALS
+              </span>
+              <div className="flex flex-wrap gap-2">
+                <a
+                  href="https://github.com/AayushSinghRajput"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1.5 font-mono text-xs bg-[#E9E3D8] hover:bg-[#20201D] hover:text-[#F5F1E8] border border-[#DAD4C9] rounded transition-colors inline-flex items-center gap-1.5"
+                >
+                  <Github className="w-3.5 h-3.5" />
+                  <span>GitHub</span>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/aayush-kumar-singh-ce"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1.5 font-mono text-xs bg-[#E9E3D8] hover:bg-[#20201D] hover:text-[#F5F1E8] border border-[#DAD4C9] rounded transition-colors inline-flex items-center gap-1.5"
+                >
+                  <Linkedin className="w-3.5 h-3.5" />
+                  <span>LinkedIn</span>
+                </a>
+                <a
+                  href="/resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1.5 font-mono text-xs bg-[#20201D] text-[#F5F1E8] hover:bg-[#E65336] border border-[#20201D] rounded transition-colors inline-flex items-center gap-1.5"
+                >
+                  <FileDown className="w-3.5 h-3.5" />
+                  <span>Resume PDF</span>
+                </a>
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Right Column: Accessible Form Card (7 cols) */}
+        <div className="lg:col-span-7 bg-[#FFFFFF] border border-[#DAD4C9] p-6 sm:p-8 rounded space-y-6">
+          <div className="flex items-center justify-between pb-4 border-b border-[#DAD4C9]">
+            <h3 className="font-serif text-2xl text-[#20201D]">
+              Direct Transmission Form
+            </h3>
+            <span className="font-mono text-[10px] text-[#8A9367] uppercase">
+              SECURE DISPATCH
+            </span>
+          </div>
+
+          {/* Form Status Banners */}
+          {submitStatus === "success" && (
+            <div
+              role="status"
+              aria-live="polite"
+              className="p-4 bg-[#8A9367]/15 border border-[#8A9367] rounded text-xs font-mono text-[#20201D] flex items-start gap-2.5"
+            >
+              <CheckCircle2 className="w-4 h-4 text-[#8A9367] flex-shrink-0 mt-0.5" />
+              <span>{statusMessage}</span>
+            </div>
+          )}
+
+          {submitStatus === "error" && (
+            <div
+              role="alert"
+              aria-live="assertive"
+              className="p-4 bg-[#E65336]/10 border border-[#E65336] rounded text-xs font-mono text-[#20201D] flex items-start gap-2.5"
+            >
+              <AlertCircle className="w-4 h-4 text-[#E65336] flex-shrink-0 mt-0.5" />
+              <span>{statusMessage}</span>
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} noValidate className="space-y-5">
+            {/* Honeypot Spam Field (Hidden from real users, filled by bots) */}
+            <div className="hidden" aria-hidden="true">
+              <label htmlFor="website-field">Website</label>
+              <input
+                id="website-field"
+                type="text"
+                name="honeypot"
+                value={values.honeypot}
+                onChange={handleChange}
+                tabIndex={-1}
+                autoComplete="off"
+              />
+            </div>
+
+            {/* Name Field */}
+            <div className="space-y-1.5">
+              <label
+                htmlFor="contact-name"
+                className="block font-mono text-xs uppercase tracking-wider text-[#20201D]"
+              >
+                Full Name <span className="text-[#E65336]">*</span>
+              </label>
+              <input
+                id="contact-name"
+                name="name"
+                type="text"
+                required
+                value={values.name}
+                onChange={handleChange}
+                aria-invalid={!!errors.name}
+                aria-describedby={errors.name ? "name-error" : undefined}
+                placeholder="Aayush Singh"
+                className={`w-full px-4 py-2.5 bg-[#F5F1E8] border text-sm text-[#20201D] rounded transition-colors focus:bg-[#FFFFFF] focus:outline-none focus:ring-1 ${
+                  errors.name
+                    ? "border-[#E65336] focus:ring-[#E65336]"
+                    : "border-[#DAD4C9] focus:border-[#20201D] focus:ring-[#20201D]"
+                }`}
+              />
+              {errors.name && (
+                <p id="name-error" role="alert" className="text-xs font-mono text-[#E65336]">
+                  {errors.name}
+                </p>
+              )}
+            </div>
+
+            {/* Email Field */}
+            <div className="space-y-1.5">
+              <label
+                htmlFor="contact-email"
+                className="block font-mono text-xs uppercase tracking-wider text-[#20201D]"
+              >
+                Email Address <span className="text-[#E65336]">*</span>
+              </label>
+              <input
+                id="contact-email"
+                name="email"
+                type="email"
+                required
+                value={values.email}
+                onChange={handleChange}
+                aria-invalid={!!errors.email}
+                aria-describedby={errors.email ? "email-error" : undefined}
+                placeholder="aayush@example.com"
+                className={`w-full px-4 py-2.5 bg-[#F5F1E8] border text-sm text-[#20201D] rounded transition-colors focus:bg-[#FFFFFF] focus:outline-none focus:ring-1 ${
+                  errors.email
+                    ? "border-[#E65336] focus:ring-[#E65336]"
+                    : "border-[#DAD4C9] focus:border-[#20201D] focus:ring-[#20201D]"
+                }`}
+              />
+              {errors.email && (
+                <p id="email-error" role="alert" className="text-xs font-mono text-[#E65336]">
+                  {errors.email}
+                </p>
+              )}
+            </div>
+
+            {/* Message Field */}
+            <div className="space-y-1.5">
+              <label
+                htmlFor="contact-message"
+                className="block font-mono text-xs uppercase tracking-wider text-[#20201D]"
+              >
+                Project Scope / Message <span className="text-[#E65336]">*</span>
+              </label>
+              <textarea
+                id="contact-message"
+                name="message"
+                required
+                rows={5}
+                value={values.message}
+                onChange={handleChange}
+                aria-invalid={!!errors.message}
+                aria-describedby={errors.message ? "message-error" : undefined}
+                placeholder="Tell me about your architectural objectives, technology stack, or collaboration..."
+                className={`w-full px-4 py-2.5 bg-[#F5F1E8] border text-sm text-[#20201D] rounded transition-colors focus:bg-[#FFFFFF] focus:outline-none focus:ring-1 resize-y ${
+                  errors.message
+                    ? "border-[#E65336] focus:ring-[#E65336]"
+                    : "border-[#DAD4C9] focus:border-[#20201D] focus:ring-[#20201D]"
+                }`}
+              />
+              {errors.message && (
+                <p id="message-error" role="alert" className="text-xs font-mono text-[#E65336]">
+                  {errors.message}
+                </p>
+              )}
+            </div>
+
+            {/* Submit Button */}
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full sm:w-auto arch-button-primary disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
+            >
+              {isSubmitting ? (
+                <>
+                  <div className="w-3.5 h-3.5 border-2 border-[#FFFFFF] border-t-transparent rounded-full animate-spin" />
+                  <span>Transmitting...</span>
+                </>
+              ) : (
+                <>
+                  <Send className="w-3.5 h-3.5" />
+                  <span>Transmit Message</span>
+                </>
+              )}
+            </button>
+          </form>
         </div>
       </div>
     </section>

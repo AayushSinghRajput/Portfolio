@@ -32,7 +32,7 @@ import {
   BarChart3,
   PenTool,
 } from "lucide-react";
-import nexalarisCertificate from "./nexalaris_certificate.png";
+import nexalarisCertificate from "./nexalaris_certificate.webp";
 import davCertificate from "./DAV.jpg";
 import janakpurCertificate from "./Janakpur.jpg";
 
@@ -270,6 +270,11 @@ export const socialLinks = [
     label: "LinkedIn",
   },
   {
+    icon: Twitter,
+    href: "https://x.com/AayushSing003",
+    label: "X (Twitter)",
+  },
+  {
     icon: Mail,
     href: "mailto:aayushsinghrajput2002@gmail.com",
     label: "Email",
@@ -346,6 +351,24 @@ export interface Experience {
 
 export const experiences: Experience[] = [
   {
+    id: 5,
+    title: "Full-Stack Developer Intern",
+    company: "NavaNexa Tech",
+    location: "Kathmandu, Nepal",
+    period: "July 2025 – Present",
+    type: "Internship",
+    icon: Briefcase,
+    description:
+      "Engineered secure backend integrations, payment gateway adapters (CityPay, Fonepay), and KYC verification flows for fintech platforms.",
+    achievements: [
+      "Integrated regional payment gateways with verified webhook processing",
+      "Implemented KYC verification flows and multi-step customer onboarding sequences",
+      "Architected transactional data schemas ensuring transaction auditability and rollback safety",
+    ],
+    technologies: ["React", "Node.js", "PostgreSQL", "REST APIs", "Fintech Workflows"],
+    gradient: "from-blue-600 to-indigo-600",
+  },
+  {
     id: 1,
     title: "Web & Mobile Application Development Intern",
     company: "Nexalaris Tech Pvt. Ltd.",
@@ -378,7 +401,7 @@ export const experiences: Experience[] = [
   },
   {
     id: 2,
-    title: "Full-Stack Developer",
+    title: "Full-Stack & AI Developer — Civic-Tech Legal Chatbot",
     company: "Janakpur Hackathon 2.0",
     location: "Onsite",
     period: "December 2025",
@@ -422,37 +445,22 @@ export const experiences: Experience[] = [
     },
   },
   {
-    id: 4,
-    title: "Mobile App Developer",
-    company: "DAV Codefest 2025",
-    location: "Onsite",
-    period: "July 2025",
-    type: "Hackathon",
-    icon: Leaf,
-    badge: "Top 15",
+    id: 6,
+    title: "Frontend Developer Intern",
+    company: "BlueFox Pvt. Ltd.",
+    location: "Kathmandu, Nepal",
+    period: "November 2024 – December 2024",
+    type: "Internship",
+    icon: Briefcase,
     description:
-      "Built SMART KRISHI — an AI-powered agriculture platform for farmers with real-time crop tracking, a digital marketplace, machinery rental, and crop disease prediction via image analysis.",
+      "Built responsive web interfaces, interactive UI modules, and optimized client-side state handling and component performance.",
     achievements: [
-      "Built a full mobile application using React Native within hackathon timeframe",
-      "Implemented AI-based crop disease prediction via image uploads",
-      "Designed a real-time crop monitoring dashboard for farmers",
-      "Showcased to industry judges and received positive feedback",
+      "Engineered modular React component systems adhering to accessibility and responsive design standards",
+      "Optimized client-side rendering performance and collaborated with backend teams on API contracts",
+      "Ensured cross-browser consistency and fluid layouts across core client portals",
     ],
-    technologies: [
-      "React Native",
-      "Node.js",
-      "Express",
-      "MongoDB",
-      "REST APIs",
-      "Git",
-    ],
-    gradient: "from-green-500 to-emerald-500",
-    certificateImage: davCertificate,
-    projectInfo: {
-      appName: "SMART KRISHI",
-      description:
-        "An AI-driven agriculture platform giving farmers real-time crop growth tracking, timely insights, a digital marketplace to connect directly with buyers, machinery rental services, and AI-based crop disease prediction through image uploads.",
-    },
+    technologies: ["JavaScript", "React", "CSS3 / Tailwind", "REST APIs"],
+    gradient: "from-amber-500 to-orange-500",
   },
 ];
 
@@ -498,25 +506,6 @@ export const projects = [
       "https://github.com/AayushSinghRajput/GreenCart---Grocery-WebApp.git",
     demo: "https://green-cart-grocery-web-app.vercel.app",
     gradient: "from-emerald-500 to-teal-500",
-    category: "Web Development",
-  },
-  {
-    id: 3,
-    title: "Thumblify",
-    description:
-      "React app integrating Google Gemini for real-time AI thumbnail generation, interactive previews, style/color controls, and Cloudinary-backed storage and management.",
-    technologies: [
-      "React",
-      "Express.js",
-      "Node.js",
-      "MongoDB",
-      "Gemini",
-      "Cloudinary",
-    ],
-    icon: Sparkles,
-    github: "https://github.com/AayushSinghRajput/Thumblify.git",
-    demo: "https://thumblify-six-flame.vercel.app",
-    gradient: "from-violet-500 to-fuchsia-500",
     category: "Web Development",
   },
   {

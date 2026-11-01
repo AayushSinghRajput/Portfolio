@@ -6,6 +6,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { ThemeProvider } from "next-themes";
 import { lazy, Suspense } from "react";
+import AppLayout from "./components/layout/AppLayout";
+import GoogleAnalytics from "./components/analytics/GoogleAnalytics";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
@@ -19,41 +21,52 @@ const ContactPage = lazy(() => import("./pages/ContactPage"));
 const Blog = lazy(() => import("./pages/Blog"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
 
+const ProjectCaseStudyPage = lazy(() => import("./pages/ProjectCaseStudyPage"));
+
 const queryClient = new QueryClient();
 
-// Loading fallback for lazy routes
+// Architectural loading fallback for lazy routes
 const PageLoader = () => (
-  <div className="min-h-screen bg-background flex items-center justify-center">
-    <div className="flex flex-col items-center gap-4">
-      <div className="w-10 h-10 border-2 border-primary border-t-transparent rounded-full animate-spin" />
-      <span className="text-sm font-medium text-muted-foreground">Loading page...</span>
+  <div className="min-h-screen bg-[#F5F1E8] flex items-center justify-center p-6" role="status" aria-live="polite">
+    <div className="flex flex-col items-center gap-3">
+      <div className="w-8 h-8 border-2 border-[#20201D] border-t-transparent rounded-full animate-spin" />
+      <span className="font-mono text-xs uppercase tracking-wider text-[#5E5B54]">Loading section...</span>
     </div>
   </div>
 );
 
 const App = () => (
   <HelmetProvider>
-    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+    <ThemeProvider attribute="class" defaultTheme="light" forcedTheme="light" enableSystem={false}>
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
           <Toaster />
           <Sonner />
-          <BrowserRouter>
-            <Suspense fallback={<PageLoader />}>
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/about" element={<AboutPage />} />
-                <Route path="/skills" element={<SkillsPage />} />
-                <Route path="/projects" element={<ProjectsPage />} />
-                <Route path="/experience" element={<ExperiencePage />} />
-                <Route path="/education" element={<EducationPage />} />
-                <Route path="/contact" element={<ContactPage />} />
-                <Route path="/blog" element={<Blog />} />
-                <Route path="/blog/:slug" element={<BlogPost />} />
-                {/* 404 Catch-All */}
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </Suspense>
+          <BrowserRouter
+            future={{
+              v7_startTransition: true,
+              v7_relativeSplatPath: true,
+            }}
+          >
+            <GoogleAnalytics />
+            <AppLayout>
+              <Suspense fallback={<PageLoader />}>
+                <Routes>
+                  <Route path="/" element={<Index />} />
+                  <Route path="/about" element={<AboutPage />} />
+                  <Route path="/skills" element={<SkillsPage />} />
+                  <Route path="/projects" element={<ProjectsPage />} />
+                  <Route path="/projects/:slug" element={<ProjectCaseStudyPage />} />
+                  <Route path="/experience" element={<ExperiencePage />} />
+                  <Route path="/education" element={<EducationPage />} />
+                  <Route path="/contact" element={<ContactPage />} />
+                  <Route path="/blog" element={<Blog />} />
+                  <Route path="/blog/:slug" element={<BlogPost />} />
+                  {/* 404 Catch-All */}
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </Suspense>
+            </AppLayout>
           </BrowserRouter>
         </TooltipProvider>
       </QueryClientProvider>

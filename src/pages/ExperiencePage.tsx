@@ -1,18 +1,16 @@
 import { Link } from "react-router-dom";
-import { ArrowLeft, BookOpen, Briefcase } from "lucide-react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import { ArrowLeft } from "lucide-react";
 import SEOHead from "@/components/SEOHead";
-import Experience from "@/components/Experience";
-import { Button } from "@/components/ui/button";
+import ExperienceTimeline from "@/components/ExperienceTimeline";
+import Footer from "@/components/Footer";
 
-const ExperiencePage = () => {
+export const ExperiencePage = () => {
   return (
-    <div className="bg-background text-foreground min-h-screen flex flex-col justify-between">
+    <div className="min-h-screen flex flex-col justify-between pt-28 sm:pt-36 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       <SEOHead
-        title="Experience & Journey | Aayush Kumar Singh"
-        description="Professional internship background and hackathon accomplishments of Aayush Kumar Singh. Nexalaris Innovations, Janakpur Hackathon 2.0 Runner-Up, and key engineering impact."
-        keywords="Experience, Nexalaris Innovations, Janakpur Hackathon, Full Stack Internship, Aayush Kumar Singh"
+        title="Experience & Career Journey | Aayush Kumar Singh"
+        description="Professional experience, internships, and engineering leadership of Aayush Kumar Singh: TuitionMaster, NavaNexa Tech, Nexalaris Tech, and BlueFox."
+        keywords="Experience, Internships, TuitionMaster, NavaNexa, Nexalaris, BlueFox, Aayush Kumar Singh"
         canonical="/experience"
         breadcrumbs={[
           { name: "Home", url: "/" },
@@ -20,26 +18,19 @@ const ExperiencePage = () => {
         ]}
       />
 
-      <Navbar />
-
-      <main className="pt-28 pb-20 flex-grow">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="max-w-6xl mx-auto">
-            {/* Back link */}
-            <Link
-              to="/"
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-8"
-            >
-              <ArrowLeft size={16} />
-              <span>Back to Home</span>
-            </Link>
-
-            {/* Core Experience Component */}
-            <Experience />
-
-          </div>
+      <div>
+        <div className="mb-6">
+          <Link
+            to="/"
+            className="inline-flex items-center gap-2 text-xs font-mono tracking-wider uppercase text-[#5E5B54] hover:text-[#20201D] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#E65336]"
+          >
+            <ArrowLeft className="w-3.5 h-3.5" />
+            <span>Back to Home</span>
+          </Link>
         </div>
-      </main>
+
+        <ExperienceTimeline />
+      </div>
 
       <Footer />
     </div>
