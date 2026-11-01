@@ -1,4 +1,6 @@
 import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
+import typography from "@tailwindcss/typography";
 
 export default {
   darkMode: ["class"],
@@ -14,44 +16,50 @@ export default {
     },
     extend: {
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        bg: "var(--bg)",
+        "bg-alt": "var(--bg-alt)",
+        ink: "var(--ink)",
+        "ink-secondary": "var(--ink-secondary)",
+        vermilion: "var(--accent)",
+        olive: "var(--olive)",
+        border: "var(--border)",
+        input: "var(--border)",
+        ring: "var(--accent)",
+        background: "var(--bg)",
+        foreground: "var(--ink)",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-          glow: "hsl(var(--primary-glow))",
+          DEFAULT: "var(--ink)",
+          foreground: "var(--bg)",
+          glow: "var(--accent)",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+          DEFAULT: "var(--bg-alt)",
+          foreground: "var(--ink)",
         },
         destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
+          DEFAULT: "#D32F2F",
+          foreground: "#FFFFFF",
         },
         success: {
-          DEFAULT: "hsl(var(--success))",
-          foreground: "hsl(var(--success-foreground))",
+          DEFAULT: "#2E7D32",
+          foreground: "#FFFFFF",
         },
         muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          DEFAULT: "var(--muted)",
+          foreground: "var(--ink-secondary)",
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-          glow: "hsl(var(--accent-glow))",
+          DEFAULT: "var(--accent)",
+          foreground: "#FFFFFF",
+          glow: "var(--accent)",
         },
         popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
+          DEFAULT: "var(--white)",
+          foreground: "var(--ink)",
         },
         card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
+          DEFAULT: "var(--white)",
+          foreground: "var(--ink)",
         },
       },
       backgroundImage: {
@@ -61,14 +69,18 @@ export default {
         'gradient-card': 'var(--gradient-card)',
       },
       boxShadow: {
-        'primary': 'var(--shadow-primary)',
-        'accent': 'var(--shadow-accent)',
-        'card': 'var(--shadow-card)',
-        'glow': 'var(--shadow-glow)',
+        'primary': '0 4px 20px -2px rgba(32, 32, 29, 0.08)',
+        'accent': '0 4px 20px -2px rgba(230, 83, 54, 0.15)',
+        'card': '0 2px 10px rgba(32, 32, 29, 0.04)',
+        'glow': '0 0 30px rgba(230, 83, 54, 0.2)',
       },
       fontFamily: {
-        'inter': ['Inter', 'system-ui', 'sans-serif'],
-        'code': ['JetBrains Mono', 'Fira Code', 'monospace'],
+        serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+        display: ['"Instrument Serif"', 'Georgia', 'serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        inter: ['Inter', 'system-ui', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'monospace'],
+        code: ['"JetBrains Mono"', 'monospace'],
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -116,5 +128,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
+  plugins: [tailwindcssAnimate, typography],
 } satisfies Config;

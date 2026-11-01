@@ -2,10 +2,10 @@ import { useState } from "react";
 import { GraduationCap, Award, BookOpen, ExternalLink, Calendar, MapPin, Sparkles, CheckCircle, Brain, CheckCircle2 } from "lucide-react";
 import janakpurCert from "@/assets/Janakpur.jpg";
 import davCert from "@/assets/DAV.jpg";
-import nexalarisCert from "@/assets/nexalaris_certificate.png";
-import scikitLearnCert from "@/assets/datacamp/supervised_learning_with_scikitlearn.jpg";
-import unsupervisedCert from "@/assets/datacamp/unsupervised_learning_with_python.jpg";
-import mlFundamentalsCert from "@/assets/datacamp/understanding_machine_learning.jpg";
+import nexalarisCert from "@/assets/nexalaris_certificate.webp";
+import scikitLearnCert from "@/assets/datacamp/supervised_learning_with_scikitlearn.webp";
+import unsupervisedCert from "@/assets/datacamp/unsupervised_learning_with_python.webp";
+import mlFundamentalsCert from "@/assets/datacamp/understanding_machine_learning.webp";
 
 export interface CertificateItem {
   id: string;
@@ -155,7 +155,7 @@ const Education = () => {
                 <div className="flex flex-wrap gap-4 text-xs text-muted-foreground mb-6 pb-6 border-b border-border/50">
                   <span className="flex items-center gap-1.5">
                     <Calendar size={14} className="text-primary" />
-                    Graduation: 2025
+                    Graduation: 2026
                   </span>
                   <span className="flex items-center gap-1.5">
                     <MapPin size={14} className="text-primary" />

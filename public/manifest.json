@@ -1,11 +1,11 @@
 {
-  "name": "Aayush Singh Rajput Portfolio",
-  "short_name": "Aayush Portfolio",
-  "description": "Full Stack Developer Portfolio showcasing React, Node.js, and MongoDB projects",
+  "name": "Aayush Kumar Singh Portfolio",
+  "short_name": "Aayush Singh",
+  "description": "Computer Engineering Graduate, Full-Stack Developer & AI-Integrated Software Engineer",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0f172a",
-  "theme_color": "#4f46e5",
+  "background_color": "#F5F1E8",
+  "theme_color": "#F5F1E8",
   "icons": [
     {
       "src": "/favicon.ico",

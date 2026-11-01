@@ -1,5 +1,5 @@
 import { Github, Linkedin, Mail } from 'lucide-react';
-import profileAvatar from '@/assets/profile_image.png';
+import profileAvatar from '@/assets/profile_image.webp';
 
 const AuthorCard = () => {
   return (

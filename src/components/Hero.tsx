@@ -1,225 +1,144 @@
-import { useState, useEffect, lazy, Suspense } from "react";
-import { ArrowDown, Github, Linkedin, Mail, Sparkles, Terminal, FileText, Code2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { motion, AnimatePresence } from "framer-motion";
-import profileAvatar from "@/assets/profile_image.png";
+import React, { lazy, Suspense } from "react";
+import { ArrowDownRight, Compass, Sparkles, Send, ArrowDown } from "lucide-react";
+import profilePhoto from "@/assets/profile_image.webp";
+import Hero3DFallback from "@/components/canvas/Hero3DFallback";
 
 const Hero3DCanvas = lazy(() => import("@/components/canvas/Hero3DCanvas"));
 
-const ROLES = [
-  "Full Stack Developer",
-  "AI & ML Engineer",
-  "Technical Writer & SEO Specialist",
-  "FastAPI & RAG Builder",
-  "Problem Solver & Innovator",
-];
-
-const Hero = () => {
-  const [roleIndex, setRoleIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setRoleIndex((prev) => (prev + 1) % ROLES.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+export const Hero: React.FC = () => {
+  const scrollTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   return (
     <section
       id="home"
-      className="min-h-screen flex flex-col justify-center relative overflow-hidden pt-20 pb-12 sm:pt-24 md:pt-28"
+      aria-label="Introduction and Overview"
+      className="relative min-h-[92vh] sm:min-h-screen flex flex-col justify-between pt-28 sm:pt-36 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden"
     >
-      {/* Dynamic Aurora & Mesh Background */}
-      <div className="absolute inset-0 bg-gradient-hero"></div>
+      {/* Top Editorial Mono Metadata Row */}
+      <div className="relative z-10 flex flex-wrap items-center justify-between gap-4 text-[11px] font-mono uppercase tracking-wider text-[#5E5B54] border-b border-[#DAD4C9] pb-4">
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-[#8A9367] animate-pulse" aria-hidden="true" />
+          <span className="text-[#20201D] font-medium">Available for opportunities</span>
+          <span className="hidden sm:inline text-[#77746C]">// Kathmandu, Nepal</span>
+        </div>
 
-      {/* 3D Interactive Geometric Glassmorphism Canvas */}
-      <Suspense fallback={null}>
-        <Hero3DCanvas />
-      </Suspense>
-
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.15, 0.25, 0.15],
-            x: [0, 30, 0],
-            y: [0, -30, 0],
-          }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/4 left-1/4 w-80 h-80 sm:w-96 sm:h-96 bg-primary/20 rounded-full blur-[100px]"
-        />
-        <motion.div
-          animate={{
-            scale: [1.2, 1, 1.2],
-            opacity: [0.12, 0.22, 0.12],
-            x: [0, -40, 0],
-            y: [0, 40, 0],
-          }}
-          transition={{ duration: 14, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 sm:w-[450px] sm:h-[450px] bg-accent/20 rounded-full blur-[120px]"
-        />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,rgba(5,10,24,0.7)_80%)]" />
+        <div className="hidden md:flex items-center gap-6 text-[#77746C]">
+          <span>IOE PURWANCHAL CAMPUS</span>
+          <span>•</span>
+          <span>B.E. COMPUTER ENGINEERING</span>
+          <span>•</span>
+          <span className="text-[#20201D]">EST. 2026</span>
+        </div>
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
+      {/* Main Hero Composition: Type Left, 3D Sculpture Space Right */}
+      <div className="relative z-10 my-auto grid lg:grid-cols-12 gap-8 lg:gap-12 items-center py-8">
+        {/* Left Column: Headlines & Positioning (7 cols) */}
+        <div className="lg:col-span-7 flex flex-col items-start space-y-6 sm:space-y-8">
           
-          {/* Terminal whoami badge */}
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 mb-8 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-md text-xs sm:text-sm font-mono text-cyan-400 shadow-sm shadow-primary/20"
-          >
-            <Terminal className="w-3.5 h-3.5 text-cyan-400" />
-            <span>$ whoami</span>
-            <span className="text-muted-foreground">→</span>
-            <span className="text-foreground font-semibold">aayush_kumar_singh</span>
-            <span className="inline-block w-2 h-3.5 bg-cyan-400 animate-pulse ml-0.5" />
-          </motion.div>
-
-          {/* Profile Image with Glowing Aura & 3D Tilt Hover */}
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.7, type: "spring", stiffness: 100 }}
-            className="mb-8 relative inline-block group"
-          >
-            <div className="absolute -inset-1.5 bg-gradient-to-r from-primary via-accent to-purple-500 rounded-full blur-md opacity-75 group-hover:opacity-100 transition duration-500 group-hover:blur-lg animate-pulse" />
-            <div className="relative w-32 h-32 sm:w-40 sm:h-40 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-background shadow-2xl transition-transform duration-300 group-hover:scale-105">
+          {/* Portrait Vignette & Positioning Pill */}
+          <div className="flex items-center gap-3.5">
+            <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden border border-[#20201D] shadow-sm flex-shrink-0">
               <img
-                src={profileAvatar}
-                alt="Aayush Kumar Singh - Full Stack Developer & ML Engineer"
-                className="w-full h-full object-cover object-center transform transition duration-500 group-hover:scale-110"
+                src={profilePhoto}
+                alt="Portrait of Aayush Kumar Singh"
+                className="w-full h-full object-cover grayscale contrast-125 hover:grayscale-0 transition-all duration-300"
+                width={56}
+                height={56}
                 loading="eager"
               />
             </div>
-            {/* Status dot */}
-            <div className="absolute bottom-1 right-2 sm:bottom-2 sm:right-3 flex items-center justify-center p-1 bg-background rounded-full">
-              <span className="relative flex h-3.5 w-3.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-500 border border-background"></span>
-              </span>
+            <div>
+              <p className="font-mono text-xs text-[#5E5B54] tracking-wider uppercase">
+                Aayush Kumar Singh
+              </p>
+              <h2 className="text-xs sm:text-sm font-sans font-medium text-[#20201D]">
+                Computer Engineering Graduate <span className="text-[#E65336] mx-1">|</span> Full-Stack Developer <span className="text-[#E65336] mx-1">|</span> AI-Integrated Software Engineer
+              </h2>
             </div>
-          </motion.div>
+          </div>
 
-          {/* Main Headings */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="space-y-4"
-          >
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight">
-              <span className="text-gradient">Aayush Kumar Singh</span>
+          {/* Primary Statement */}
+          <div className="space-y-4">
+            <h1 className="text-hero text-[#20201D] max-w-2xl font-serif">
+              I engineer ideas into interactive digital experiences.
             </h1>
-
-            {/* Cycling Role with AnimatePresence */}
-            <div className="h-10 sm:h-12 flex items-center justify-center">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={roleIndex}
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -15 }}
-                  transition={{ duration: 0.35, ease: "easeOut" }}
-                  className="text-xl sm:text-2xl md:text-3xl font-semibold text-accent flex items-center gap-2"
-                >
-                  <Sparkles className="w-5 h-5 text-amber-400 animate-spin-slow" />
-                  <span>{ROLES[roleIndex]}</span>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-
-            <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed pt-2">
-              Full Stack Developer crafting scalable web applications with{" "}
-              <span className="text-foreground font-medium">React, Next.js, Node.js & FastAPI</span> — 
-              extended into ML Engineering with{" "}
-              <span className="text-cyan-400 font-medium">RAG pipelines, LangChain, & Vector DBs</span>. 
-              Hackathon Runner-Up based in Kathmandu, Nepal.
+            <p className="text-base sm:text-lg text-[#5E5B54] leading-relaxed max-w-xl font-sans">
+              Building scalable software, intelligent applications and immersive digital experiences through engineering and creative technology.
             </p>
-          </motion.div>
+          </div>
 
-          {/* CTA Action Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
-            className="flex flex-wrap gap-4 justify-center items-center pt-8"
-          >
-            <Button
-              size="lg"
-              className="gradient-primary text-primary-foreground font-semibold px-8 py-6 rounded-xl hover:scale-105 transition-all duration-300 shadow-lg shadow-primary/30 group"
-              onClick={() => scrollToSection("#projects")}
+          {/* CTA Action Cluster */}
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-2">
+            <button
+              type="button"
+              onClick={() => scrollTo("work")}
+              className="arch-button-primary group"
+              aria-label="View Selected Work section"
             >
-              <Code2 className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform" />
-              View Projects
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="px-8 py-6 rounded-xl font-semibold border-primary/30 bg-background/50 backdrop-blur-sm hover:bg-primary/10 hover:border-primary/60 hover:scale-105 transition-all duration-300"
-              onClick={() => scrollToSection("#contact")}
-            >
-              Get in Touch
-            </Button>
-          </motion.div>
+              <span>View Selected Work</span>
+              <ArrowDownRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:translate-y-0.5" />
+            </button>
 
-          {/* Social Dock Links */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.6 }}
-            className="flex justify-center items-center space-x-5 pt-8"
-          >
-            <a
-              href="https://github.com/AayushSinghRajput"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub profile"
-              className="p-3 rounded-full glass-card hover:border-cyan-400/50 hover:bg-cyan-500/10 hover:scale-125 hover:text-cyan-400 transition-all duration-300 shadow-md"
+            <button
+              type="button"
+              onClick={() => scrollTo("playground")}
+              className="arch-button-secondary group"
+              aria-label="Explore My Experiments playground"
             >
-              <Github size={22} />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/aayush-kumar-singh-ce"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn profile"
-              className="p-3 rounded-full glass-card hover:border-blue-400/50 hover:bg-blue-500/10 hover:scale-125 hover:text-blue-400 transition-all duration-300 shadow-md"
-            >
-              <Linkedin size={22} />
-            </a>
-            <a
-              href="mailto:aayushsinghrajput2002@gmail.com"
-              aria-label="Send email"
-              className="p-3 rounded-full glass-card hover:border-red-400/50 hover:bg-red-500/10 hover:scale-125 hover:text-red-400 transition-all duration-300 shadow-md"
-            >
-              <Mail size={22} />
-            </a>
-          </motion.div>
+              <Sparkles className="w-4 h-4 text-[#8A9367]" />
+              <span>Explore My Experiments</span>
+            </button>
 
-          {/* Scroll Indicator */}
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="pt-12 hidden sm:flex justify-center cursor-pointer"
-            onClick={() => scrollToSection("#about")}
-          >
-            <div className="flex flex-col items-center gap-1 text-muted-foreground/60 hover:text-foreground transition-colors">
-              <span className="text-xs uppercase tracking-widest font-mono">Scroll</span>
-              <ArrowDown size={16} />
-            </div>
-          </motion.div>
-
+            <button
+              type="button"
+              onClick={() => scrollTo("contact")}
+              className="arch-button-secondary group"
+              aria-label="Contact Me section"
+            >
+              <Send className="w-3.5 h-3.5 text-[#E65336]" />
+              <span>Contact Me</span>
+            </button>
+          </div>
         </div>
+
+        {/* Right Column: Architectural Space & Sculpture Staging (5 cols) */}
+        <div className="lg:col-span-5 min-h-[440px] sm:min-h-[520px] lg:min-h-[600px] w-full relative flex items-center justify-center">
+          {/* Borderless 3D Kinetic Sculpture / Fallback */}
+          <div className="w-full h-full min-h-[440px] sm:min-h-[520px] lg:min-h-[600px] relative flex items-center justify-center">
+            <Suspense fallback={<Hero3DFallback />}>
+              <Hero3DCanvas className="w-full h-full" />
+            </Suspense>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Editorial Bar: Status, Scroll Indicator, Coordinates */}
+      <div className="relative z-10 flex flex-wrap items-end justify-between gap-4 pt-6 border-t border-[#DAD4C9]">
+        <div className="max-w-md">
+          <span className="font-mono text-[10px] text-[#77746C] uppercase tracking-widest block mb-1">
+            Status // November 2026
+          </span>
+          <p className="text-xs sm:text-sm text-[#20201D] font-sans">
+            Available for relevant engineering opportunities and collaborations.
+          </p>
+        </div>
+
+        {/* Scroll Cue */}
+        <button
+          type="button"
+          onClick={() => scrollTo("intro")}
+          className="group inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-[#5E5B54] hover:text-[#20201D] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#E65336]"
+          aria-label="Scroll to Introduction"
+        >
+          <span>Scroll to explore</span>
+          <ArrowDown className="w-3.5 h-3.5 text-[#E65336] animate-bounce" />
+        </button>
       </div>
     </section>
   );
