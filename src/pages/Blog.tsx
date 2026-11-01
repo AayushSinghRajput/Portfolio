@@ -36,8 +36,6 @@ const Blog = () => {
         ]}
       />
 
-      <Navbar />
-
       <main className="pt-28 pb-20">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">

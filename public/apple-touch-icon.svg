@@ -1,16 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Background gradient -->
-  <rect width="180" height="180" rx="45" fill="url(#paint0_linear)"/>
+  <!-- Architectural Deep Ink Canvas Tile -->
+  <rect width="180" height="180" rx="42" fill="#20201D"/>
   
-  <!-- Text -->
-  <text x="90" y="114" font-family="Inter, sans-serif" font-weight="700" font-size="80" text-anchor="middle" fill="white">AR</text>
+  <!-- Subtle Architectural Technical Framing -->
+  <rect x="10" y="10" width="160" height="160" rx="32" stroke="#5E5B54" stroke-width="2.5" stroke-dasharray="6 4" opacity="0.55"/>
   
-  <!-- Gradient definition -->
-  <defs>
-    <linearGradient id="paint0_linear" x1="0" y1="0" x2="180" y2="180" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#6366f1"/>
-      <stop offset="100%" stop-color="#4f46e5"/>
-    </linearGradient>
-  </defs>
+  <!-- Signature Vermilion Coordinate Dot -->
+  <circle cx="140" cy="40" r="9" fill="#E65336"/>
+
+  <!-- Architectural AKS Monogram in Warm Ivory -->
+  <text 
+    x="90" 
+    y="114" 
+    font-family="Georgia, 'Times New Roman', 'Instrument Serif', serif" 
+    font-size="65" 
+    font-weight="700" 
+    text-anchor="middle" 
+    fill="#F5F1E8" 
+    letter-spacing="2"
+  >AKS</text>
+  
+  <!-- Technical Dimension Rule in Olive -->
+  <rect x="62" y="128" width="56" height="2.5" rx="1.25" fill="#8A9367" opacity="0.8"/>
 </svg>

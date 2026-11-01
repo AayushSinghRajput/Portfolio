@@ -1,12 +1,13 @@
 const API_URL =
-  window.location.hostname === "localhost"
+  typeof window !== "undefined" && window.location.hostname === "localhost"
     ? "http://localhost:5000/api/contact"
     : "https://portfolio-backend-yn3w.onrender.com/api/contact";
 
 export interface ContactFormData {
-  name: string;
-  email: string;
-  message: string;
+  name?: string;
+  email?: string;
+  message?: string;
+  honeypot?: string;
 }
 
 export interface ContactApiResult {
@@ -17,21 +18,47 @@ export interface ContactApiResult {
 export const submitContactForm = async (
   formData: ContactFormData
 ): Promise<ContactApiResult> => {
+  // Honeypot spam defense: if bot filled hidden field, return success immediately
+  if (formData.honeypot && formData.honeypot.trim().length > 0) {
+    return { success: true };
+  }
+
+  const name = (formData.name || "").trim();
+  const email = (formData.email || "").trim();
+  const message = (formData.message || "").trim();
+
+  if (!name || !email || !message) {
+    return {
+      success: false,
+      errorMessage: "Name, email, and message are required fields.",
+    };
+  }
+
   try {
     const res = await fetch(API_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(formData),
+      body: JSON.stringify({
+        name,
+        email,
+        message,
+      }),
     });
 
-    const data = await res.json();
+    const data = await res.json().catch(() => null);
 
     if (!res.ok) {
+      if (res.status === 429) {
+        return {
+          success: false,
+          errorMessage: data?.message || "Rate limit reached (5 requests / 15 mins). Please try again shortly.",
+        };
+      }
       return {
         success: false,
-        errorMessage: data?.error || "Something went wrong. Please try again later.",
+        errorMessage: data?.error || data?.message || "Something went wrong. Please try again later.",
       };
     }
 
@@ -40,7 +67,7 @@ export const submitContactForm = async (
     console.error("Submit error:", err);
     return {
       success: false,
-      errorMessage: "Couldn't send the message. Please check your connection and try again.",
+      errorMessage: "Couldn't reach the server. Please check your network connection or email directly at aayushsinghrajput2002@gmail.com.",
     };
   }
 };

@@ -88,7 +88,6 @@ const BlogPost = () => {
       />
 
       <ReadingProgress />
-      <Navbar />
 
       <main className="pt-28 pb-20">
         <div className="container mx-auto px-4">
