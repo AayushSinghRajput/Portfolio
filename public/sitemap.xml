@@ -1,17 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <!-- Core Pages -->
   <url>
     <loc>https://www.aayushkumarsingh.com.np/</loc>
-    <lastmod>2026-09-27</lastmod>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.aayushkumarsingh.com.np/aayush-kumar-singh.jpg</image:loc>
+      <image:title>Aayush Kumar Singh — Full-Stack Developer &amp; AI Engineer</image:title>
+      <image:caption>Official portrait photo of Aayush Kumar Singh, Computer Engineering graduate and AI Software Engineer.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://www.aayushkumarsingh.com.np/about</loc>
-    <lastmod>2026-09-27</lastmod>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.aayushkumarsingh.com.np/aayush-kumar-singh.jpg</image:loc>
+      <image:title>About Aayush Kumar Singh — Engineering Philosophy &amp; Experience</image:title>
+      <image:caption>Profile picture of Aayush Kumar Singh.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://www.aayushkumarsingh.com.np/skills</loc>

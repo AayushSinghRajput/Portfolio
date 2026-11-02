@@ -32,14 +32,18 @@ export const About: React.FC = () => {
         <div className="lg:col-span-4 space-y-4">
           <div className="relative border border-[#20201D] bg-[#E9E3D8] p-3 rounded overflow-hidden shadow-xs">
             <div className="aspect-[4/5] overflow-hidden rounded border border-[#DAD4C9] bg-[#20201D]/5">
-              <img
-                src={profilePhoto}
-                alt="Aayush Kumar Singh — Computer Engineering Graduate and AI Software Engineer"
-                className="w-full h-full object-cover object-center grayscale contrast-115 hover:grayscale-0 transition-all duration-500"
-                loading="lazy"
-                width={400}
-                height={500}
-              />
+              <picture>
+                <source srcSet="/aayush-kumar-singh.webp" type="image/webp" />
+                <img
+                  src="/aayush-kumar-singh.jpg"
+                  alt="Aayush Kumar Singh — Computer Engineering Graduate and AI Software Engineer"
+                  title="Aayush Kumar Singh"
+                  className="w-full h-full object-cover object-center grayscale contrast-115 hover:grayscale-0 transition-all duration-500"
+                  loading="lazy"
+                  width={400}
+                  height={500}
+                />
+              </picture>
             </div>
             <div className="pt-3 flex items-center justify-between font-mono text-[11px] text-[#5E5B54]">
               <span>AAYUSH KUMAR SINGH</span>

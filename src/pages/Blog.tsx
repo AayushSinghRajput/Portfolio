@@ -15,6 +15,14 @@ const Blog = () => {
   const allPosts = useMemo(() => getAllPosts(), []);
   const categories = useMemo(() => getCategories(), []);
 
+  const categoryCounts = useMemo(() => {
+    const counts: Record<string, number> = { All: allPosts.length };
+    allPosts.forEach((post) => {
+      counts[post.category] = (counts[post.category] || 0) + 1;
+    });
+    return counts;
+  }, [allPosts]);
+
   const filteredPosts = useMemo(() => {
     let posts = searchQuery ? searchPosts(searchQuery) : allPosts;
     if (activeCategory !== 'All') {
@@ -24,7 +32,7 @@ const Blog = () => {
   }, [allPosts, activeCategory, searchQuery]);
 
   return (
-    <div className="bg-background text-foreground min-h-screen">
+    <div className="bg-[#F5F1E8] text-[#20201D] min-h-screen">
       <SEOHead
         title="Blog"
         description="Technical articles, project breakdowns, and learning insights from Aayush Kumar Singh — Full Stack Developer & ML Engineer."
@@ -42,27 +50,25 @@ const Blog = () => {
             {/* Back link */}
             <Link
               to="/"
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors mb-8"
+              className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#5E5B54] hover:text-[#E65336] transition-colors mb-8 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#E65336]"
             >
-              <ArrowLeft size={16} />
-              Back to Portfolio
+              <ArrowLeft size={14} />
+              <span>Back to Home</span>
             </Link>
 
             {/* Header */}
             <div className="text-center mb-12">
-              <div className="flex items-center justify-center gap-3 mb-6">
-                <div className="p-3 rounded-xl bg-gradient-primary">
-                  <PenLine size={28} className="text-primary-foreground" />
+              <div className="flex items-center justify-center gap-3 mb-4">
+                <div className="p-3 rounded-lg bg-[#20201D] text-[#F5F1E8] border border-[#20201D]">
+                  <PenLine size={24} className="text-[#E65336]" />
                 </div>
               </div>
-              <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                Blog & <span className="text-gradient">Articles</span>
+              <h1 className="text-4xl md:text-5xl font-serif text-[#20201D] mb-4">
+                Engineering Writing &amp; Articles
               </h1>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                Technical deep dives, project breakdowns, hackathon stories, and lessons from my
-                journey as a Full Stack Developer & ML Engineer.
+              <p className="text-base sm:text-lg text-[#5E5B54] max-w-2xl mx-auto leading-relaxed font-sans">
+                Technical deep dives, architecture breakdowns, hackathon stories, and lessons from shipping production systems.
               </p>
-              <div className="w-24 h-1 bg-gradient-primary mx-auto rounded-full mt-6" />
             </div>
 
             {/* Search */}
@@ -71,29 +77,74 @@ const Blog = () => {
             </div>
 
             {/* Category Filters */}
-            <div className="flex justify-center flex-wrap gap-2 mb-12">
-              {categories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => {
-                    setActiveCategory(cat);
-                    setSearchQuery('');
-                  }}
-                  className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 border ${
-                    activeCategory === cat
-                      ? 'bg-gradient-primary border-transparent text-white shadow-lg scale-105'
-                      : 'border-border text-muted-foreground hover:text-foreground hover:border-foreground/30'
-                  }`}
-                >
-                  {cat}
-                  {activeCategory === cat && (
-                    <span className="ml-2 text-xs opacity-70">
-                      {filteredPosts.length}
+            <div
+              className="flex justify-center flex-wrap gap-2.5 mb-8"
+              role="toolbar"
+              aria-label="Filter blog posts by category"
+            >
+              {categories.map((cat) => {
+                const isActive = activeCategory === cat;
+                const count = categoryCounts[cat] || 0;
+
+                return (
+                  <button
+                    key={cat}
+                    type="button"
+                    onClick={() => {
+                      setActiveCategory(cat);
+                      setSearchQuery('');
+                    }}
+                    aria-pressed={isActive}
+                    className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-mono tracking-wide transition-all duration-200 border focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#E65336] ${
+                      isActive
+                        ? 'bg-[#20201D] text-[#F5F1E8] border-[#20201D] shadow-sm scale-105'
+                        : 'bg-[#FFFFFF] text-[#5E5B54] border-[#DAD4C9] hover:border-[#20201D] hover:text-[#20201D]'
+                    }`}
+                  >
+                    <span>{cat}</span>
+                    <span
+                      className={`px-1.5 py-0.5 rounded-full text-[10px] font-mono leading-none transition-colors ${
+                        isActive
+                          ? 'bg-[#E65336] text-white font-semibold'
+                          : 'bg-[#E9E3D8] text-[#5E5B54]'
+                      }`}
+                    >
+                      {count}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Active Filter Bar */}
+            {(activeCategory !== 'All' || searchQuery) && (
+              <div className="flex items-center justify-between pb-4 mb-8 border-b border-[#DAD4C9] text-xs font-mono text-[#5E5B54]">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span>Filtered by:</span>
+                  {activeCategory !== 'All' && (
+                    <span className="px-2 py-0.5 bg-[#20201D] text-[#F5F1E8] rounded text-[11px] font-medium">
+                      {activeCategory}
                     </span>
                   )}
+                  {searchQuery && (
+                    <span className="px-2 py-0.5 bg-[#E9E3D8] text-[#20201D] rounded text-[11px]">
+                      "{searchQuery}"
+                    </span>
+                  )}
+                  <span>({filteredPosts.length} {filteredPosts.length === 1 ? 'article' : 'articles'})</span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setActiveCategory('All');
+                    setSearchQuery('');
+                  }}
+                  className="text-[#E65336] hover:underline cursor-pointer font-medium"
+                >
+                  Reset filters ✕
                 </button>
-              ))}
-            </div>
+              </div>
+            )}
 
             {/* Posts Grid */}
             {filteredPosts.length > 0 ? (

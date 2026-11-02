@@ -43,19 +43,19 @@
   </g>
 
   <!-- Badge -->
-  <rect x="100" y="75" width="230" height="34" rx="17" fill="#f59e0b" fill-opacity="0.15" stroke="#f59e0b" stroke-opacity="0.5"/>
-  <text x="215" y="97" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#fcd34d" text-anchor="middle" letter-spacing="0.06em">AI ARCHITECTURE &amp; OPTIMIZATION</text>
+  <rect x="100" y="80" width="240" height="34" rx="17" fill="#f59e0b" fill-opacity="0.15" stroke="#f59e0b" stroke-opacity="0.5"/>
+  <text x="220" y="102" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#fcd34d" text-anchor="middle" letter-spacing="0.06em">AI ARCHITECTURE &amp; OPTIMIZATION</text>
 
   <!-- Title -->
-  <text x="100" y="165" font-family="system-ui, sans-serif" font-size="44" font-weight="800" fill="#ffffff" letter-spacing="-0.02em">
+  <text x="100" y="175" font-family="system-ui, sans-serif" font-size="44" font-weight="800" fill="#ffffff" letter-spacing="-0.02em">
     Stop Using LLMs as
   </text>
-  <text x="100" y="222" font-family="system-ui, sans-serif" font-size="44" font-weight="800" fill="url(#accent)" letter-spacing="-0.02em">
+  <text x="100" y="232" font-family="system-ui, sans-serif" font-size="44" font-weight="800" fill="url(#accent)" letter-spacing="-0.02em">
     Expensive If/Else Statements
   </text>
 
   <!-- Subtitle -->
-  <text x="100" y="278" font-family="system-ui, sans-serif" font-size="19" fill="#94a3b8">
+  <text x="100" y="284" font-family="system-ui, sans-serif" font-size="19" fill="#94a3b8">
     Building high-performance AI systems with System 1 heuristics vs. System 2 reasoning
   </text>
 
