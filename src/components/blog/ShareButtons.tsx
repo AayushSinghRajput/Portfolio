@@ -41,7 +41,7 @@ const ShareButtons = ({ title, url }: ShareButtonsProps) => {
 
   return (
     <div className="flex items-center gap-2">
-      <span className="text-sm text-muted-foreground mr-1">Share:</span>
+      <span className="text-xs font-mono text-[#5E5B54] uppercase tracking-wider mr-1">Share:</span>
       {links.map((link) =>
         link.href ? (
           <a
@@ -49,19 +49,19 @@ const ShareButtons = ({ title, url }: ShareButtonsProps) => {
             href={link.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2 rounded-lg glass-card hover:scale-110 transition-transform text-muted-foreground hover:text-foreground"
+            className="p-2 rounded-lg bg-[#FFFFFF] border border-[#DAD4C9] hover:border-[#20201D] text-[#5E5B54] hover:text-[#20201D] hover:scale-105 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#E65336]"
             aria-label={`Share on ${link.label}`}
           >
-            <link.icon size={16} />
+            <link.icon size={15} />
           </a>
         ) : (
           <button
             key={link.label}
             onClick={link.onClick}
-            className="p-2 rounded-lg glass-card hover:scale-110 transition-transform text-muted-foreground hover:text-foreground"
+            className="p-2 rounded-lg bg-[#FFFFFF] border border-[#DAD4C9] hover:border-[#20201D] text-[#5E5B54] hover:text-[#20201D] hover:scale-105 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#E65336]"
             aria-label={link.label}
           >
-            <link.icon size={16} />
+            <link.icon size={15} />
           </button>
         ),
       )}
