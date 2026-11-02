@@ -30,7 +30,7 @@ export const Introduction: React.FC = () => {
     <section
       id="intro"
       aria-label="Engineering Philosophy"
-      className="py-24 sm:py-36 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-[#DAD4C9]"
+      className="pt-16 sm:pt-24 pb-24 sm:pb-36 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
     >
       {/* Section Index Marker */}
       <div className="flex items-center justify-between font-mono text-xs text-[#77746C] tracking-widest uppercase mb-12 sm:mb-16">
@@ -74,7 +74,7 @@ export const Introduction: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: idx * 0.1, ease: "easeOut" }}
-            className="p-6 bg-[#FFFFFF] border border-[#DAD4C9] hover:border-[#20201D] transition-colors flex flex-col justify-between group"
+            className="p-6 sm:p-7 bg-[#FFFFFF]/90 backdrop-blur-sm border border-[#E2D9CC] rounded-xl hover:border-[#DE4F26] hover:shadow-sm transition-all duration-300 flex flex-col justify-between group"
           >
             <div>
               <div className="flex items-center justify-between font-mono text-xs text-[#77746C] mb-4">

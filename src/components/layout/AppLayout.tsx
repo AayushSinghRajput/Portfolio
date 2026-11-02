@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import { CustomCursor } from "@/components/ui/CustomCursor";
+import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { useLenisScroll } from "@/hooks/useLenisScroll";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
@@ -63,6 +64,7 @@ export const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
           </motion.div>
         </AnimatePresence>
       </main>
+      <WhatsAppButton />
     </div>
   );
 };
