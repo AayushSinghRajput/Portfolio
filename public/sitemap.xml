@@ -50,9 +50,21 @@
   </url>
   <url>
     <loc>https://www.aayushkumarsingh.com.np/contact</loc>
-    <lastmod>2026-09-27</lastmod>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.aayushkumarsingh.com.np/privacy-policy</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.aayushkumarsingh.com.np/terms</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 
   <!-- Project Case Studies -->
@@ -90,6 +102,30 @@
   </url>
 
   <!-- Blog Articles -->
+  <url>
+    <loc>https://www.aayushkumarsingh.com.np/blog/fullstack-type-safety-typescript-fastapi-zod</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.aayushkumarsingh.com.np/blog/react-three-fiber-architectural-performance</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.aayushkumarsingh.com.np/blog/mastering-fastapi-streaming-for-llm-apps</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.aayushkumarsingh.com.np/blog/evaluating-and-optimizing-rag-systems</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
   <url>
     <loc>https://www.aayushkumarsingh.com.np/blog/stop-using-llms-as-if-else</loc>
     <lastmod>2026-09-28</lastmod>
