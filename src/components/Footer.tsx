@@ -162,6 +162,21 @@ export const Footer: React.FC = () => {
           <span>
             © {currentYear} Aayush Kumar Singh. All rights reserved.
           </span>
+          <div className="flex items-center gap-4 text-xs font-mono">
+            <Link
+              to="/privacy-policy"
+              className="text-[#5E5B54] hover:text-[#20201D] underline-offset-4 hover:underline transition-colors"
+            >
+              Privacy Policy
+            </Link>
+            <span className="text-[#DAD4C9]">•</span>
+            <Link
+              to="/terms"
+              className="text-[#5E5B54] hover:text-[#20201D] underline-offset-4 hover:underline transition-colors"
+            >
+              Terms of Service
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

@@ -20,6 +20,8 @@ const EducationPage = lazy(() => import("./pages/EducationPage"));
 const ContactPage = lazy(() => import("./pages/ContactPage"));
 const Blog = lazy(() => import("./pages/Blog"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
+const PrivacyPolicyPage = lazy(() => import("./pages/PrivacyPolicyPage"));
+const TermsPage = lazy(() => import("./pages/TermsPage"));
 
 const ProjectCaseStudyPage = lazy(() => import("./pages/ProjectCaseStudyPage"));
 
@@ -62,6 +64,8 @@ const App = () => (
                   <Route path="/contact" element={<ContactPage />} />
                   <Route path="/blog" element={<Blog />} />
                   <Route path="/blog/:slug" element={<BlogPost />} />
+                  <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+                  <Route path="/terms" element={<TermsPage />} />
                   {/* 404 Catch-All */}
                   <Route path="*" element={<NotFound />} />
                 </Routes>
